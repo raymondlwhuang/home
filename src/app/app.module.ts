@@ -15,6 +15,8 @@ import { JavascriptComponent } from './javascript/javascript.component';
 import { MaterialModule } from './material/material.module';
 import { FrequentUsedjsComponent } from './frequent-usedjs/frequent-usedjs.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FunctionComponent } from './function/function.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { HttpClientModule } from '@angular/common/http';
     PortfolioComponent,
     SkillsDemoComponent,
     JavascriptComponent,
-    FrequentUsedjsComponent
+    FrequentUsedjsComponent,
+    FunctionComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

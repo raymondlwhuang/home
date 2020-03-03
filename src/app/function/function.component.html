@@ -1,0 +1,24 @@
+<div class="main">
+    <h3>CALL, APPLY, BIND, CALLBACK, PROMISE</h3>
+    <mat-form-field>
+        <mat-label>Your selection</mat-label>
+        <mat-select (selectionChange)="renderNewResult($event)">
+          <mat-option *ngFor="let funct of functions" [value]="funct.value">
+            {{funct.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>    
+  
+    <div id="show-log" class="hide-log">
+      <button class="btn" (click)="MyDecision()">Do my job!</button>
+      <button class="btn" (click)="MyDecision(true)">I am tired!</button>
+      
+      <div id="log"></div>
+    </div>  
+  <p>javaScript code</p>      
+  <div id="code-snip">
+  </div>
+  <p>output</p>
+  <div id="output">
+
+  </div>
