@@ -5,6 +5,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatSelectModule } from '@angular/material/select';
 
 const material =[
   MatButtonModule,
@@ -12,7 +15,10 @@ const material =[
   MatToolbarModule,
   MatIconModule,
   MatTabsModule,
-  MatTableModule
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatSelectModule
 ];
 
 @NgModule({

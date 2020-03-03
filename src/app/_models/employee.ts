@@ -8,6 +8,7 @@ export interface Employee {
         "age": Number;
         "eyeColor": String;
         "name": Name;
+        "fullName"?: String;
         "gender": String;
         "company": String;
         "email": String;

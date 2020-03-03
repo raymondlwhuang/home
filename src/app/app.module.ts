@@ -14,6 +14,7 @@ import { SkillsDemoComponent } from './skills-demo/skills-demo.component';
 import { JavascriptComponent } from './javascript/javascript.component';
 import { MaterialModule } from './material/material.module';
 import { FrequentUsedjsComponent } from './frequent-usedjs/frequent-usedjs.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { FrequentUsedjsComponent } from './frequent-usedjs/frequent-usedjs.compo
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     DeferLoadModule,
     BrowserAnimationsModule,
     MaterialModule

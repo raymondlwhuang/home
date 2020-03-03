@@ -16,12 +16,15 @@ export class EmploymentComponent implements OnInit {
   }
   
   showSlides = () =>{
-    for (let i = 0; i < this.slides.length; i++) {
-      this.slides[i].style.display = "none";  
+    if(this.slides.length>0){
+      for (let i = 0; i < this.slides.length; i++) {
+        this.slides[i].style.display = "none";  
+      }
+      this.slides[this.slideIndex].style.display = "block"; 
+      this.slideIndex++;
+      if (this.slideIndex >= this.slides.length) {this.slideIndex = 0}  
+      setTimeout(this.showSlides,5000);
+  
     }
-    this.slides[this.slideIndex].style.display = "block"; 
-    this.slideIndex++;
-    if (this.slideIndex >= this.slides.length) {this.slideIndex = 0}  
-    setTimeout(this.showSlides,5000);
   }
 }
