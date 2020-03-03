@@ -1,0 +1,27 @@
+<div class="nav-container">
+    <nav>
+        <ul>
+            <li id="javaScript">JavaScript
+                <ul class="submenu">
+                    <li><a routerLink="javaScript:DOM" routerLinkActive="active">DOM</a></li>
+                    <li><a routerLink="javaScript:FREQUENTLY" routerLinkActive="active">OBJECT AND ARRAY</a></li>
+                    <li><a routerLink="javaScript:FUNCTIONS" routerLinkActive="active">FUNCTIONS</a></li>
+                    <li>MORE TO COME SOON</li>
+                </ul>
+                
+            </li>
+            <li><a routerLink="jQuery" routerLinkActive="active">jQuery</a></li>
+            <!--li><a routerLink="CSS" routerLinkActive="active">CSS</a></li-->
+        </ul>
+    </nav>
+    
+</div>
+<mat-tab-group>
+    <mat-tab label="First"> 
+        <app-javascript></app-javascript>
+    </mat-tab>
+    <mat-tab label="Second"> 
+        <app-frequent-usedjs></app-frequent-usedjs>
+    </mat-tab>
+    <mat-tab label="Third"> Content 3 </mat-tab>
+</mat-tab-group>

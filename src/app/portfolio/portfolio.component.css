@@ -1,0 +1,27 @@
+.desc {
+    margin-top: 100px;
+    text-align: center;
+    font-size: 20px;
+}
+.img-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 50px;
+}
+ .images{
+    padding: 10px;
+    margin-top: 30px;
+    background-color: #ccc;
+
+ }
+ .my-github {
+     font-size: 18px;
+     font-weight: 700;
+     text-decoration: none;
+ }
+ .my-github svg {
+     display: inline;
+     vertical-align: middle;
+ }
