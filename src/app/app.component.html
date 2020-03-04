@@ -1,15 +1,23 @@
-<div>
+<div class="main">
   <mat-toolbar class="nav-bar" color="primary">
+    <button mat-button routerLink="/home" routerLinkActive="active"><mat-icon>reorder</mat-icon></button>
+    
     <div>
       <button mat-button routerLink="/home" routerLinkActive="active"><mat-icon>home</mat-icon></button>
       <button mat-button routerLink="/portfolio" routerLinkActive="active">PORTFOLIO</button>
       <button mat-button routerLink="/others" routerLinkActive="active">OTHERS</button>
-      <button mat-button routerLink="/skills-demo" routerLinkActive="active">DEMO</button>
+      <button mat-button routerLinkActive="active"[matMenuTriggerFor]="afterMenu">DEMO</button>
+      <mat-menu class="submenu" #afterMenu="matMenu" xPosition="after">
+        <button mat-menu-item routerLink="/skills-demo">Javascript</button>
+        <button mat-menu-item routerLink="/jQuery" >JQuery</button>
+      </mat-menu>
+
       <button mat-button *ngIf="!(isLoggedIn | async)" routerLink="/login" routerLinkActive="active">PRIVATE</button>
       <button mat-button *ngIf="(isLoggedIn | async)" id="logout" (click)="logout()">LOGOUT</button>
   
     </div>
-    <button mat-button href="https://github.com/raymondlwhuang/HomePage" target="_blank">Source</button>
+    <a  mat-button href="https://github.com/raymondlwhuang/home" target="_blank">Source</a>
+    
   </mat-toolbar>  
 </div>
 <div class="router-container">

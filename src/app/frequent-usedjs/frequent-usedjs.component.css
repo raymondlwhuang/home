@@ -3,7 +3,7 @@
 }
 .select-wrapper {
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
 }
 textarea {
   width: 100%;
@@ -43,7 +43,11 @@ table th {
 }
 
 @media all and (max-width : 599px){
-/*  .main{
-    max-width: 300px;
-  }*/
+  .select-wrapper {
+    display: block;
+  }
+  textarea {
+    width: 100%;
+    margin-left: 0;
+  }
 }

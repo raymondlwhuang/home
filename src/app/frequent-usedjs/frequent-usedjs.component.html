@@ -2,15 +2,6 @@
   <h3>My frequently used JavaScript method for object and array</h3>
   <p>Data structure</p>
   <div class="select-wrapper">
-    <mat-form-field>
-      <mat-label>Your selection</mat-label>
-      <mat-select (selectionChange)="renderNewResult($event)">
-        <mat-option *ngFor="let funct of functions" [value]="funct.value">
-          {{funct.name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>    
-
     <textarea placeholder="data listed in the table below are used for this demo" rows="8">
       [
         {
@@ -21,6 +12,14 @@
       ]
 
     </textarea>
+    <mat-form-field>
+      <mat-label>Your selection</mat-label>
+      <mat-select (selectionChange)="renderNewResult($event)">
+        <mat-option *ngFor="let funct of functions" [value]="funct.value">
+          {{funct.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>    
     
 </div>
 

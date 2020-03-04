@@ -22,6 +22,7 @@ import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { fakeBackendProvider } from './_helpers/fake-backend';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CssComponent } from './css/css.component';
+import { JqueryComponent } from './jquery/jquery.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { CssComponent } from './css/css.component';
     FrequentUsedjsComponent,
     FunctionComponent,
     LoginComponent,
-    CssComponent
+    CssComponent,
+    JqueryComponent
   ],
   imports: [
     BrowserModule,

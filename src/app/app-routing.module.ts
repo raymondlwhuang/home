@@ -8,6 +8,7 @@ import { JavascriptComponent } from './javascript/javascript.component';
 import { LoginComponent } from './login/login.component';
 import { CssComponent } from './css/css.component';
 import { AuthGuard } from './_helpers/auth.guard';
+import { JqueryComponent } from './jquery/jquery.component';
 
 
 const routes: Routes = [
@@ -15,9 +16,18 @@ const routes: Routes = [
   { path: 'home', component: EmploymentComponent},
   { path: 'portfolio', component: PortfolioComponent },
   { path: 'others', component: EducationComponent },
-  { path: 'skills-demo', component: SkillsDemoComponent},
+//  { path: 'skills-demo', component: SkillsDemoComponent},
+  { 
+    path: 'skills-demo', 
+    component: SkillsDemoComponent,
+    children: [
+      { path: '', component: JavascriptComponent },
+      { path: 'javaScript', component: JavascriptComponent },
+      { path: 'CSS', component: CssComponent, canActivate: [AuthGuard] }
+    ]
+  },  
+  { path: 'jQuery', component: JqueryComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'CSS', component: CssComponent, canActivate: [AuthGuard] },
     // otherwise redirect to home
   { path: '**', redirectTo: '' }
 
