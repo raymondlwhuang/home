@@ -1,15 +1,16 @@
-<div class="nav-container">
-  <nav>
-      <ul>
-          <li><a routerLink="" routerLinkActive="active">HOME</a></li>
-          <li><a routerLink="/portfolio" routerLinkActive="active">PORTFOLIO</a></li>
-          <li><a routerLink="/others" routerLinkActive="active">OTHERS</a></li>
-          <li><a routerLink="/skills-demo" routerLinkActive="active">DEMO</a></li>
-          <li><a routerLink="/login" routerLinkActive="active">LOGIN</a></li>
-          <li class="source"><a href="https://github.com/raymondlwhuang/HomePage" target="_blank">Source</a></li>
-      </ul>
-  </nav>
+<div>
+  <mat-toolbar class="nav-bar" color="primary">
+    <div>
+      <button mat-button routerLink="/home" routerLinkActive="active"><mat-icon>home</mat-icon></button>
+      <button mat-button routerLink="/portfolio" routerLinkActive="active">PORTFOLIO</button>
+      <button mat-button routerLink="/others" routerLinkActive="active">OTHERS</button>
+      <button mat-button routerLink="/skills-demo" routerLinkActive="active">DEMO</button>
+      <button mat-button *ngIf="!(isLoggedIn | async)" routerLink="/login" routerLinkActive="active">PRIVATE</button>
+      <button mat-button *ngIf="(isLoggedIn | async)" id="logout" (click)="logout()">LOGOUT</button>
   
+    </div>
+    <button mat-button href="https://github.com/raymondlwhuang/HomePage" target="_blank">Source</button>
+  </mat-toolbar>  
 </div>
 <div class="router-container">
   <router-outlet></router-outlet>

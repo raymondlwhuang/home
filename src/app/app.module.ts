@@ -14,9 +14,14 @@ import { SkillsDemoComponent } from './skills-demo/skills-demo.component';
 import { JavascriptComponent } from './javascript/javascript.component';
 import { MaterialModule } from './material/material.module';
 import { FrequentUsedjsComponent } from './frequent-usedjs/frequent-usedjs.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FunctionComponent } from './function/function.component';
 import { LoginComponent } from './login/login.component';
+import { JwtInterceptor } from './_helpers/jwt.interceptor';
+import { ErrorInterceptor } from './_helpers/error.interceptor';
+import { fakeBackendProvider } from './_helpers/fake-backend';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CssComponent } from './css/css.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +35,8 @@ import { LoginComponent } from './login/login.component';
     JavascriptComponent,
     FrequentUsedjsComponent,
     FunctionComponent,
-    LoginComponent
+    LoginComponent,
+    CssComponent
   ],
   imports: [
     BrowserModule,
@@ -38,9 +44,16 @@ import { LoginComponent } from './login/login.component';
     HttpClientModule,
     DeferLoadModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+    // provider used to create fake backend
+    fakeBackendProvider    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -53,6 +53,7 @@ img{
     .raymond-huang{
         font-size: 45px;
         font-weight: 700;
+        white-space: nowrap;
     }
 }
 @media all and (max-width: 599px) {
