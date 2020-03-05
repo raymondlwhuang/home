@@ -14,10 +14,23 @@ a:hover{
     width: 100%;
 }
 ::ng-deep .mat-menu-content {
-    background-color: lightblue;
+    background-color: #fff;
+    width: 200px;
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    background: #1b4f1b;
+    width: 100%;
+    color: #fff;
+    text-align: center;    
 }
 @media all and (max-width: 599px){
     .nav-bar {
-        display: block;
+        display: none;
+    }
+    .router-container{
+        position: relative;
+        z-index: 0;
     }
 }

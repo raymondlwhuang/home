@@ -3,7 +3,7 @@ import { User } from './_models/user';
 import { Router } from '@angular/router';
 import { AuthenticationService } from './_services/authentication.service';
 import { AuthGuard } from './_helpers/auth.guard';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -13,8 +13,8 @@ import { Observable } from 'rxjs';
 export class AppComponent {
   title = 'home-page';
   currentUser: User;
-  test = false;
   isLoggedIn : Observable<boolean>;
+  parentClick:Subject<void> = new Subject<void>();
   constructor(
       private router: Router,
       public  authenticationService: AuthenticationService,
@@ -26,7 +26,6 @@ export class AppComponent {
   logout() {
       this.authenticationService.logout();
       this.router.navigate(['/']);
-      this.test = false;
   }
   activate(id : string) {
     let buttons = document.getElementsByName('button');
@@ -35,5 +34,8 @@ export class AppComponent {
     });
     let buttonSelected = document.getElementById(id);
     buttonSelected.setAttribute("style", "color:red");
+  }
+  closeSideNav(){
+    this.parentClick.next();
   }
 }

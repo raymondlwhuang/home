@@ -1,25 +1,27 @@
 <div class="main">
-  <mat-toolbar class="nav-bar" color="primary">
-    <button mat-button routerLink="/home" routerLinkActive="active"><mat-icon>reorder</mat-icon></button>
-    
-    <div>
-      <button mat-button routerLink="/home" routerLinkActive="active"><mat-icon>home</mat-icon></button>
-      <button mat-button routerLink="/portfolio" routerLinkActive="active">PORTFOLIO</button>
-      <button mat-button routerLink="/others" routerLinkActive="active">OTHERS</button>
-      <button mat-button routerLinkActive="active"[matMenuTriggerFor]="afterMenu">DEMO</button>
-      <mat-menu class="submenu" #afterMenu="matMenu" xPosition="after">
-        <button mat-menu-item routerLink="/skills-demo">Javascript</button>
-        <button mat-menu-item routerLink="/jQuery" >JQuery</button>
-      </mat-menu>
+  <app-main-nav [parentClick]= "parentClick">
+    <mat-toolbar class="nav-bar" color="primary">
 
-      <button mat-button *ngIf="!(isLoggedIn | async)" routerLink="/login" routerLinkActive="active">PRIVATE</button>
-      <button mat-button *ngIf="(isLoggedIn | async)" id="logout" (click)="logout()">LOGOUT</button>
-  
-    </div>
-    <a  mat-button href="https://github.com/raymondlwhuang/home" target="_blank">Source</a>
+      <div>
+        <button mat-button routerLink="/home" routerLinkActive="active"><mat-icon>home</mat-icon></button>
+        <button mat-button routerLink="/portfolio" routerLinkActive="active">PORTFOLIO</button>
+        <button mat-button routerLink="/others" routerLinkActive="active">OTHERS</button>
+        <button mat-button routerLinkActive="active" [matMenuTriggerFor]="afterMenu">DEMO</button>
+        <mat-menu class="submenu" #afterMenu="matMenu" xPosition="after">
+          <button mat-menu-item routerLink="/demo/javaScript">Javascript</button>
+          <button mat-menu-item routerLink="/demo/jQuery" >JQuery</button>
+        </mat-menu>
+
+        <button mat-button *ngIf="!(isLoggedIn | async)" routerLink="/login" routerLinkActive="active">PRIVATE</button>
+        <button mat-button *ngIf="(isLoggedIn | async)" id="logout" (click)="logout()">LOGOUT</button>
     
-  </mat-toolbar>  
+      </div>
+      <a  mat-button href="https://github.com/raymondlwhuang/home" target="_blank">Source</a>
+      
+    </mat-toolbar>  
+</app-main-nav>
 </div>
-<div class="router-container">
+<div class="router-container" (click)="closeSideNav()">
   <router-outlet></router-outlet>
 </div>
+<footer>Make with Angular</footer>

@@ -25,3 +25,8 @@
      display: inline;
      vertical-align: middle;
  }
+ @media all and (max-width: 599px) {
+    .desc svg {
+        display: none;
+    }
+ }

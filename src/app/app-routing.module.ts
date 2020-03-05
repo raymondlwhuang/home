@@ -16,17 +16,17 @@ const routes: Routes = [
   { path: 'home', component: EmploymentComponent},
   { path: 'portfolio', component: PortfolioComponent },
   { path: 'others', component: EducationComponent },
-//  { path: 'skills-demo', component: SkillsDemoComponent},
+  { path: 'CSS', component: CssComponent, canActivate: [AuthGuard] },
+  //  { path: 'skills-demo', component: SkillsDemoComponent},
   { 
-    path: 'skills-demo', 
+    path: 'demo', 
     component: SkillsDemoComponent,
     children: [
       { path: '', component: JavascriptComponent },
       { path: 'javaScript', component: JavascriptComponent },
-      { path: 'CSS', component: CssComponent, canActivate: [AuthGuard] }
     ]
   },  
-  { path: 'jQuery', component: JqueryComponent },
+  { path: 'demo/jQuery', component: JqueryComponent },
   { path: 'login', component: LoginComponent },
     // otherwise redirect to home
   { path: '**', redirectTo: '' }

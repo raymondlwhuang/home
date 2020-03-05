@@ -20,9 +20,16 @@ import { LoginComponent } from './login/login.component';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { fakeBackendProvider } from './_helpers/fake-backend';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CssComponent } from './css/css.component';
 import { JqueryComponent } from './jquery/jquery.component';
+import { MainNavComponent } from './main-nav/main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -38,7 +45,8 @@ import { JqueryComponent } from './jquery/jquery.component';
     FunctionComponent,
     LoginComponent,
     CssComponent,
-    JqueryComponent
+    JqueryComponent,
+    MainNavComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +55,14 @@ import { JqueryComponent } from './jquery/jquery.component';
     DeferLoadModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MaterialModule
+    FormsModule,
+    MaterialModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
