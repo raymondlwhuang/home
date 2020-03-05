@@ -2,12 +2,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
 }
-container {
-    max-width: 900px;
-    margin-top: 120px;
-
+.main div, .main iframe {
+    flex-basis: 0;
+    flex: 1 1 0;
+    padding: 10px;
+    min-height: 300px;
+}
+.main div a {
+    margin: 0 10px;
+    text-decoration: none;
 }
 h2 {
     text-align: center;
@@ -15,4 +20,16 @@ h2 {
 li {
     list-style-type: initial;
     list-style-position: inside;
+}
+@media all and (max-width: 599px){
+    .main {
+        display: block;
+    }
+    .main div {
+        min-height: initial;
+        width: 100%;
+    }
+    .main div, .main iframe {
+        width: 100%;
+    }
 }
