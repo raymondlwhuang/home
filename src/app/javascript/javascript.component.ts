@@ -6,9 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./javascript.component.css']
 })
 export class JavascriptComponent implements OnInit {
-  constructor() { }
+  url = window.location.origin+'/JavaScript/index.html';
+  show = false;
+  constructor() {
+  }
 
   ngOnInit() {
+    this.show = window.location.origin.indexOf('https') > 0 ? false : true;
   }
 
 }
