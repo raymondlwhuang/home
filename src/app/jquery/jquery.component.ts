@@ -7,11 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JqueryComponent implements OnInit {
   url = window.location.origin+'/jQuery/index.html';
-  show = false;
   constructor() { }
 
   ngOnInit() {
-    this.show = window.location.origin.indexOf('https') > 0 ? false : true;
   }
 
 
