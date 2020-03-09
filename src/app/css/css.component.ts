@@ -19,27 +19,28 @@ export class CssComponent implements OnInit {
   }
 
   ngOnInit() {
-    // $(function() {
-    //   $('textarea').on('change',()=>{
-    //     console.log($('textarea').val());
-    //     $('.show-case').html(<string>$('textarea').val());
-    //   })
-    //   $(".space").on('click',()=>{
-    //     $('div,section,p').removeAttr("style");
-    //     $('div p').css('color','red');
-    //   });
-    //   $(".greater_Sign").on('click',()=>{
-    //     $('div,section,p').removeAttr("style");
-    //     $('div > p').css('color','red');
-    //   });
-    //   $(".plus_Sign").on('click',()=>{
-    //     $('div,section,p').removeAttr("style");
-    //     $('div + p').css('color','red');
-    //   });
-    //   $(".aprox_Sign").on('click',()=>{
-    //     $('div,section,p').removeAttr("style");
-    //     $('div ~ p').css('color','red');
-    //   });
-    // });
+
+  }
+  renderNewResult(flag : string) {
+   let selected : any;
+   let clearEle = document.querySelectorAll('div,section,p');
+   clearEle.forEach(element => element.removeAttribute("style"));
+   switch (flag){
+      case 'space':
+        selected = document.querySelectorAll("div p");
+        break;
+      case 'greater_Sign':
+        selected = document.querySelectorAll("div > p");
+        break;
+      case 'plus_Sign':
+        selected = document.querySelectorAll("div + p");
+        break;
+      case 'aprox_Sign':
+        selected = document.querySelectorAll("div ~ p");
+        break;
+    }
+    selected.forEach(element => {
+      element.style.color = "red";
+    });
   }
 }

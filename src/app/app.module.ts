@@ -33,6 +33,8 @@ import { MatListModule } from '@angular/material/list';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { APP_BASE_HREF } from '@angular/common';
+import { RxjsComponent } from './rxjs/rxjs.component';
+import { PreShowComponent } from './pre-show/pre-show.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { APP_BASE_HREF } from '@angular/common';
     LoginComponent,
     CssComponent,
     JqueryComponent,
-    MainNavComponent
+    MainNavComponent,
+    RxjsComponent,
+    PreShowComponent
   ],
   imports: [
     BrowserModule,

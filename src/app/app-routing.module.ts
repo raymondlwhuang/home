@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { CssComponent } from './css/css.component';
 import { AuthGuard } from './_helpers/auth.guard';
 import { JqueryComponent } from './jquery/jquery.component';
+import { PreShowComponent } from './pre-show/pre-show.component';
 
 
 const routes: Routes = [
@@ -16,7 +17,7 @@ const routes: Routes = [
   { path: 'home', component: EmploymentComponent},
   { path: 'portfolio', component: PortfolioComponent },
   { path: 'others', component: EducationComponent },
-  { path: 'CSS', component: CssComponent, canActivate: [AuthGuard] },
+  { path: 'Private', component: PreShowComponent, canActivate: [AuthGuard] },
   //  { path: 'skills-demo', component: SkillsDemoComponent},
   { 
     path: 'demo', 
