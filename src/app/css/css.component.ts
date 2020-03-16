@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../_services/authentication.service';
-import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-css',
@@ -9,13 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class CssComponent implements OnInit {
 
-  constructor(private authenticationService: AuthenticationService,
-              private router : Router) { 
-        // redirect to home if already logged in
-        if (!this.authenticationService.currentUserValue) { 
-          this.router.navigate(['/login']);
-      }
-
+  constructor() { 
   }
 
   ngOnInit() {

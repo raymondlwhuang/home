@@ -12,7 +12,7 @@
           <button mat-menu-item routerLink="/demo/jQuery" >JQuery</button>
         </mat-menu>
 
-        <button mat-button *ngIf="!(isLoggedIn | async)" routerLink="/login" routerLinkActive="active">PRIVATE</button>
+        <button mat-button routerLink="/login" routerLinkActive="active">PRIVATE</button>
         <button mat-button *ngIf="(isLoggedIn | async)" id="logout" (click)="logout()">LOGOUT</button>
     
       </div>

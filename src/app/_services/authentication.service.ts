@@ -25,7 +25,7 @@ export class AuthenticationService {
     // }
     isLoggedIn() : Observable<boolean> {
         return this.loggedIn.asObservable();
-       }    
+    }    
     login(username: string, password: string) {
         return this.http.post<any>(`${environment.apiUrl}/users/authenticate`, { username, password })
             .pipe(map(user => {

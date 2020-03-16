@@ -18,7 +18,14 @@ export class FunctionComponent implements OnInit {
     {name: 'apply', value:'apply'},
     {name: 'bind', value:'bind'},
     {name: 'polyfill for bind', value:'polyfill for bind'},
-    {name: 'promise', value:'promise'}
+    {name: 'findIndex', value:'findIndex'},
+    {name: 'includes', value:'includes'},
+    {name: 'padStart', value:'padStart'},
+    {name: 'padEnd', value:'padEnd'},
+    {name: 'await', value:'await'},
+    {name: 'entries', value:'entries'},
+    {name: 'values', value:'values'},
+    {name: 'decorator', value:'decorator'},
   ];
   constructor(private _favorite : FavoriteService) { }
 
