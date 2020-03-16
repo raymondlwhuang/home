@@ -35,6 +35,8 @@ import { environment } from '../environments/environment';
 import { APP_BASE_HREF } from '@angular/common';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { PreShowComponent } from './pre-show/pre-show.component';
+import { DecoratorsComponent } from './decorators/decorators.component';
+import { ChangeDetectionComponent } from './change-detection/change-detection.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,9 @@ import { PreShowComponent } from './pre-show/pre-show.component';
     JqueryComponent,
     MainNavComponent,
     RxjsComponent,
-    PreShowComponent
+    PreShowComponent,
+    DecoratorsComponent,
+    ChangeDetectionComponent
   ],
   imports: [
     BrowserModule,
