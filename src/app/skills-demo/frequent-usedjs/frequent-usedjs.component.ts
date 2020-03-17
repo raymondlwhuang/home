@@ -1,12 +1,11 @@
 import {Component, ChangeDetectionStrategy, ViewChild} from "@angular/core";
-import { EmployeeService } from '../_services/employee.service';
-import { Employee } from '../_models/employee';
-import { Favorite } from '../_models/favorite';
-import { FavoriteService } from '../_services/favorite.service';
 import { MatPaginator } from '@angular/material/paginator';
-//import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
-import { NestedMatTableDataSource } from '../_helpers/nested-mat-table-data-source';
+import { Employee } from 'src/app/_models/employee';
+import { Favorite } from 'src/app/_models/favorite';
+import { EmployeeService } from 'src/app/_services/employee.service';
+import { FavoriteService } from 'src/app/_services/favorite.service';
+import { NestedMatTableDataSource } from 'src/app/_helpers/nested-mat-table-data-source';
 
 @Component({
   selector: 'app-frequent-usedjs',

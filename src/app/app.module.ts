@@ -4,25 +4,15 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmploymentComponent } from './employment/employment.component';
-import { EmploymentDetailComponent } from './employment-detail/employment-detail.component';
-import { ArtComponent } from './art/art.component';
-import { PortfolioComponent } from './portfolio/portfolio.component';
+import { EmploymentDetailComponent } from './employment/employment-detail/employment-detail.component';
 import { DeferLoadModule } from '@trademe/ng-defer-load';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { EducationComponent } from './education/education.component';
-import { SkillsDemoComponent } from './skills-demo/skills-demo.component';
-import { JavascriptComponent } from './javascript/javascript.component';
 import { MaterialModule } from './material/material.module';
-import { FrequentUsedjsComponent } from './frequent-usedjs/frequent-usedjs.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FunctionComponent } from './function/function.component';
-import { LoginComponent } from './login/login.component';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { fakeBackendProvider } from './_helpers/fake-backend';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { CssComponent } from './css/css.component';
-import { JqueryComponent } from './jquery/jquery.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -33,10 +23,19 @@ import { MatListModule } from '@angular/material/list';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { APP_BASE_HREF } from '@angular/common';
-import { RxjsComponent } from './rxjs/rxjs.component';
-import { PreShowComponent } from './pre-show/pre-show.component';
-import { DecoratorsComponent } from './decorators/decorators.component';
-import { ChangeDetectionComponent } from './change-detection/change-detection.component';
+import { ArtComponent } from './employment/art/art.component';
+import { EducationComponent } from './employment/education/education.component';
+import { JavascriptComponent } from './skills-demo/javascript/javascript.component';
+import { FrequentUsedjsComponent } from './skills-demo/frequent-usedjs/frequent-usedjs.component';
+import { FunctionComponent } from './skills-demo/function/function.component';
+import { JqueryComponent } from './skills-demo/jquery/jquery.component';
+import { PortfolioComponent } from './employment/portfolio/portfolio.component';
+import { LoginComponent } from './skills-demo/login/login.component';
+import { CssComponent } from './skills-demo/css/css.component';
+import { RxjsComponent } from './skills-demo/rxjs/rxjs.component';
+import { PreShowComponent } from './skills-demo/pre-show/pre-show.component';
+import { DecoratorsComponent } from './skills-demo/decorators/decorators.component';
+import { ChangeDetectionComponent } from './skills-demo/change-detection/change-detection.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +45,6 @@ import { ChangeDetectionComponent } from './change-detection/change-detection.co
     EmploymentDetailComponent,
     ArtComponent,
     PortfolioComponent,
-    SkillsDemoComponent,
     JavascriptComponent,
     FrequentUsedjsComponent,
     FunctionComponent,

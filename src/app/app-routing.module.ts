@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { EmploymentComponent } from './employment/employment.component';
-import { PortfolioComponent } from './portfolio/portfolio.component';
-import { EducationComponent } from './education/education.component';
-import { SkillsDemoComponent } from './skills-demo/skills-demo.component';
-import { JavascriptComponent } from './javascript/javascript.component';
-import { LoginComponent } from './login/login.component';
-import { CssComponent } from './css/css.component';
 import { AuthGuard } from './_helpers/auth.guard';
-import { JqueryComponent } from './jquery/jquery.component';
-import { PreShowComponent } from './pre-show/pre-show.component';
+import { EducationComponent } from './employment/education/education.component';
+import { JavascriptComponent } from './skills-demo/javascript/javascript.component';
+import { JqueryComponent } from './skills-demo/jquery/jquery.component';
+import { PortfolioComponent } from './employment/portfolio/portfolio.component';
+import { PreShowComponent } from './skills-demo/pre-show/pre-show.component';
+import { LoginComponent } from './skills-demo/login/login.component';
 
 
 const routes: Routes = [
@@ -18,15 +16,7 @@ const routes: Routes = [
   { path: 'portfolio', component: PortfolioComponent },
   { path: 'others', component: EducationComponent },
   { path: 'Private', component: PreShowComponent, canActivate: [AuthGuard] },
-  //  { path: 'skills-demo', component: SkillsDemoComponent},
-  { 
-    path: 'demo', 
-    component: SkillsDemoComponent,
-    children: [
-      { path: '', component: JavascriptComponent },
-      { path: 'javaScript', component: JavascriptComponent },
-    ]
-  },  
+  { path: 'demo/javaScript',component:  JavascriptComponent },
   { path: 'demo/jQuery', component: JqueryComponent },
   { path: 'login', component: LoginComponent },
     // otherwise redirect to home

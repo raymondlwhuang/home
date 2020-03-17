@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {EmploymentService} from '../_services/employment.service';
-import {Employment} from '../_models/employment';
+import { EmploymentService } from 'src/app/_services/employment.service';
+import { Employment } from 'src/app/_models/employment';
 
 @Component({
   selector: 'app-employment-detail',
