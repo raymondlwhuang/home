@@ -8,6 +8,7 @@ import { JqueryComponent } from './skills-demo/jquery/jquery.component';
 import { PortfolioComponent } from './employment/portfolio/portfolio.component';
 import { PreShowComponent } from './skills-demo/pre-show/pre-show.component';
 import { LoginComponent } from './skills-demo/login/login.component';
+import { DecoratorsComponent } from './skills-demo/Angular/decorators/decorators.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'Private', component: PreShowComponent, canActivate: [AuthGuard] },
   { path: 'demo/javaScript',component:  JavascriptComponent },
   { path: 'demo/jQuery', component: JqueryComponent },
+  { path: 'demo/Angular', component: DecoratorsComponent },
   { path: 'login', component: LoginComponent },
     // otherwise redirect to home
   { path: '**', redirectTo: '' }

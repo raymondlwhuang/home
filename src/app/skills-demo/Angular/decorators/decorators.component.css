@@ -1,0 +1,11 @@
+::ng-deep textarea {
+    width: 100%;
+}
+.demo-container {
+    margin: 10px;
+}
+::ng-deep .show-container {
+    border: solid 1px;
+    margin-bottom: 5px;
+    padding: 0 5px;
+}

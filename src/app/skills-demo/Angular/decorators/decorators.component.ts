@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/_models/user';
 
 @Component({
   selector: 'app-decorators',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./decorators.component.css']
 })
 export class DecoratorsComponent implements OnInit {
+  user: User;
 
   constructor() { }
 
   ngOnInit() {
   }
-
+  onSelect(user : User) {
+    this.user = user;
+  }
 }

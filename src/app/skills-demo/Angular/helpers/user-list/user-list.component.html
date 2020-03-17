@@ -1,0 +1,6 @@
+<p>
+    Users:
+    <select #selectRef [(ngModel)]="selectedOption" (change)="renderNewResult()">
+        <option *ngFor="let user of users" [ngValue]="user">{{user.firstName}}</option>
+    </select>
+</p>

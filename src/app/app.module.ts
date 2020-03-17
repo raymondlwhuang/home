@@ -26,16 +26,17 @@ import { APP_BASE_HREF } from '@angular/common';
 import { ArtComponent } from './employment/art/art.component';
 import { EducationComponent } from './employment/education/education.component';
 import { JavascriptComponent } from './skills-demo/javascript/javascript.component';
-import { FrequentUsedjsComponent } from './skills-demo/frequent-usedjs/frequent-usedjs.component';
-import { FunctionComponent } from './skills-demo/function/function.component';
 import { JqueryComponent } from './skills-demo/jquery/jquery.component';
 import { PortfolioComponent } from './employment/portfolio/portfolio.component';
 import { LoginComponent } from './skills-demo/login/login.component';
 import { CssComponent } from './skills-demo/css/css.component';
 import { RxjsComponent } from './skills-demo/rxjs/rxjs.component';
 import { PreShowComponent } from './skills-demo/pre-show/pre-show.component';
-import { DecoratorsComponent } from './skills-demo/decorators/decorators.component';
-import { ChangeDetectionComponent } from './skills-demo/change-detection/change-detection.component';
+import { FrequentUsedjsComponent } from './skills-demo/javascript/frequent-usedjs/frequent-usedjs.component';
+import { FunctionComponent } from './skills-demo/javascript/function/function.component';
+import { DecoratorsComponent } from './skills-demo/Angular/decorators/decorators.component';
+import { ChangeDetectionComponent } from './skills-demo/Angular/change-detection/change-detection.component';
+import { DecoratorsModule } from './skills-demo/Angular/decorators/decorators.module';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { ChangeDetectionComponent } from './skills-demo/change-detection/change-
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    DecoratorsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [

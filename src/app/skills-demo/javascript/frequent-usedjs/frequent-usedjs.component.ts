@@ -36,14 +36,13 @@ export class FrequentUsedjsComponent {
 
   ngOnInit() {
     this._employeeService.getEmployees().subscribe((data) => {
-      let test = data.map(result=>{
+      this.employees = data.map(result=>{
         result.fullName = result.name.first + ' ' + result.name.last;
         return result;
       });
-        this.employees = test;
-        this.dataSource =  new NestedMatTableDataSource<Employee>(data);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
+      this.dataSource =  new NestedMatTableDataSource<Employee>(data);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     });
     this._favorite.getFavorites().subscribe(data => this.favorites = data); 
   }
