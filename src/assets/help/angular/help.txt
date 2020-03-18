@@ -1,0 +1,2 @@
+pipe(take(1)).subscribe;
+pipe(shareReplay()).subscribe //stop Subject Subscription is triggered twice

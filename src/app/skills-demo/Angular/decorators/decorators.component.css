@@ -1,11 +1,36 @@
 ::ng-deep textarea {
     width: 100%;
+    overflow: hidden;
+    resize: none;    
 }
 .demo-container {
     margin: 10px;
+    border: solid;
+    padding: 5px;
 }
 ::ng-deep .show-container {
     border: solid 1px;
     margin-bottom: 5px;
     padding: 0 5px;
+}
+.group {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+}
+.group div {
+    flex-grow: 1;
+}
+.group div:first-child {
+    flex-basis: 185px;
+    flex-grow: 0;
+}
+.add-border {
+    border: solid 1px;
+}
+h3 {
+    text-align: center;
+}
+button {
+    align-self: flex-start;
 }

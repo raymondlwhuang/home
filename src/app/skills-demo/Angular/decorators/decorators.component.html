@@ -2,18 +2,33 @@
     <mat-tab label="Decorators"> 
         <mat-tab-group>
             <mat-tab label="Build in Decorators"> 
-                <div class="demo-container">
-                    <app-user-list (onSelect)="onSelect($event)"></app-user-list>
-                    <app-user  [user]="user"></app-user>
-                    <app-user-applications  [user]="user"></app-user-applications>
-<textarea rows="4">
-#selectRef - add reference to element 
-@ViewChild('selectRef', {static: false}) selectEleRef : ElementRef; //in version 8 needed to add {static: false}
-inside ngAfterViewInit interact with nativeElement
-@Output() onSelect: EventEmitter<User>  = new EventEmitter; //output data from child template
-@Input()  user: User; //get input in child template
-use ngOnChanges to get application base on user selection
-</textarea>        
+                <div class="group">
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Your selection</mat-label>
+                            <mat-select  (selectionChange)="renderNewResult($event)">
+                              <mat-option *ngFor="let demo of demos" [value]="demo.name">
+                                {{demo.name}}
+                              </mat-option>
+                            </mat-select>
+                        </mat-form-field>    
+                    </div>
+                    <div id="code-snip">
+                    </div>
+                </div>
+                <h3>Show Case</h3>
+                <div [ngSwitch]="true">
+                    <div *ngSwitchCase="flag == 'input' || flag =='output'" class="demo-container">
+                        <div class="flex-horizontal">
+                            <app-user-list [parentClick]="parentClick" (onSelect)="onSelect($event)"></app-user-list>
+                            <button (click)="clickMe()">Click me</button>
+                        </div>
+                        <app-user  [user]="user"></app-user>
+                        <app-user-applications  [user]="user"></app-user-applications>
+                    </div>
+                    <div *ngSwitchDefault>
+                        <h3>Please make your selection for show case</h3>
+                    </div>
                 </div>
         
             </mat-tab>

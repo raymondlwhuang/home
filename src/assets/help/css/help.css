@@ -1,0 +1,3 @@
+button {
+    align-self: flex-start; /*Prevent a flex items height from expanding to match other flex items*/
+}
