@@ -30,6 +30,9 @@ export class CssComponent implements OnInit {
       case 'aprox_Sign':
         selected = document.querySelectorAll("div ~ p");
         break;
+      case 'first_p':
+        selected = document.querySelectorAll("div p:first-child");
+        break;
     }
     selected.forEach(element => {
       element.style.color = "red";

@@ -37,6 +37,7 @@ import { FunctionComponent } from './skills-demo/javascript/function/function.co
 import { DecoratorsComponent } from './skills-demo/Angular/decorators/decorators.component';
 import { ChangeDetectionComponent } from './skills-demo/Angular/change-detection/change-detection.component';
 import { DecoratorsModule } from './skills-demo/Angular/decorators/decorators.module';
+import { ShowCaseComponent } from './skills-demo/Angular/helpers/show-case/show-case.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { DecoratorsModule } from './skills-demo/Angular/decorators/decorators.mo
     RxjsComponent,
     PreShowComponent,
     DecoratorsComponent,
-    ChangeDetectionComponent
+    ChangeDetectionComponent,
+    ShowCaseComponent
   ],
   imports: [
     BrowserModule,

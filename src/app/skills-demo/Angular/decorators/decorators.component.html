@@ -18,13 +18,19 @@
                 </div>
                 <h3>Show Case</h3>
                 <div [ngSwitch]="true">
-                    <div *ngSwitchCase="flag == 'input' || flag =='output'" class="demo-container">
+                    <div *ngSwitchCase="flag == 'Input' || flag =='Output' || flag =='ViewChild'" class="demo-container">
                         <div class="flex-horizontal">
                             <app-user-list [parentClick]="parentClick" (onSelect)="onSelect($event)"></app-user-list>
-                            <button (click)="clickMe()">Click me</button>
+                            <button (click)="startClock()">Start Clock</button>
                         </div>
                         <app-user  [user]="user"></app-user>
                         <app-user-applications  [user]="user"></app-user-applications>
+                    </div>
+                    <div *ngSwitchCase="flag == 'ViewChildren'" class="demo-container">
+                        <button (click)="changeMessage()">Message</button>
+                        <app-show-case [flag]="flag"></app-show-case>
+                        <app-show-case [flag]="flag"></app-show-case>
+                        <app-show-case [flag]="flag"></app-show-case>
                     </div>
                     <div *ngSwitchDefault>
                         <h3>Please make your selection for show case</h3>
@@ -33,14 +39,11 @@
         
             </mat-tab>
             <mat-tab label="Create a Custome Decorators"> 
-                Content 2
+                comming soon
             </mat-tab>
         </mat-tab-group>        
     </mat-tab>
     <mat-tab label="Change Detction"> 
-        Content 2
-    </mat-tab>
-    <mat-tab label="Third">
-         Content 3 
+        comming soon
     </mat-tab>
   </mat-tab-group>

@@ -264,7 +264,7 @@
 	},
 	{ 
 		"group":"decorator",
-		"name": "input", 
+		"name": "Input", 
 		"snip": [
 			"@Input()  user: User;",
 			"@Input()  parentClick: Subject &lt;void&gt;;",
@@ -273,14 +273,23 @@
 	},
 	{ 
 		"group":"decorator",
-		"name": "output", 
+		"name": "Output", 
 		"snip": ["@Output() onSelect: EventEmitter<User>  = new EventEmitter;"],
 		"output": [""]
 	},
 	{ 
 		"group":"decorator",
 		"name": "ViewChild", 
-		"snip": ["@ViewChild('selectRef', {static: false}) selectEleRef : ElementRef;"],
+		"snip": [
+		"@ViewChild('selectRef', {static: false}) selectEleRef : ElementRef;",
+		"@ViewChild(UserListComponent,{static:false}) userListComponent : UserListComponent;"
+		],
+		"output": [""]
+	},
+	{ 
+		"group":"decorator",
+		"name": "ViewChildren", 
+		"snip": ["@ViewChildren(ShowCaseComponent) showCaseComponent : ShowCaseComponent;"],
 		"output": [""]
 	}
 ]

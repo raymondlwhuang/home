@@ -15,11 +15,17 @@ export class UserListComponent implements OnInit,AfterViewInit {
   @Output() onSelect: EventEmitter<User>  = new EventEmitter;
   @Input() parentClick: Subject <void>;
   @ViewChild('selectRef', {static: false}) selectEleRef : ElementRef;
+  today: Date = new Date();
+  message : string;
   constructor(private userService : UserService) { }
 
   ngOnInit() {
     this.userService.getUsers().subscribe(data => this.users = data);
-    this.parentClick.pipe(shareReplay()).subscribe(()=>alert('Parent Button Clicked'));
+    this.parentClick.pipe(shareReplay()).subscribe(()=>{
+      this.message = 'Message from child: Parent Button Clicked,Clock Started Now!';
+      let selected =  document.querySelectorAll("div p:first-child");
+       selected.forEach((ele:HTMLElement)=>ele.style.color="red");
+      });
   }
   ngAfterViewInit(){
     this.selectEleRef.nativeElement.focus();

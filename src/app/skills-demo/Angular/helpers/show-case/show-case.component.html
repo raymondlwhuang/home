@@ -1,0 +1,9 @@
+<div [ngSwitch]="true">
+    <div *ngSwitchCase="flag == 'ViewChildren'" class="demo-container">
+        {{today}}
+        <p>{{message}}</p>
+    </div>
+    <div *ngSwitchDefault>
+        <h3>Please make your selection for show case</h3>
+    </div>
+</div>

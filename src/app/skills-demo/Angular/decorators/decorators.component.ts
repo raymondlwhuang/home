@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { User } from 'src/app/_models/user';
 import { DemoService } from 'src/app/_services/demo.service';
 import { Demo } from 'src/app/_models/demo';
 import { Subject } from 'rxjs';
+import { UserListComponent } from '../helpers/user-list/user-list.component';
+import { ShowCaseComponent } from '../helpers/show-case/show-case.component';
 
 @Component({
   selector: 'app-decorators',
@@ -14,6 +16,9 @@ export class DecoratorsComponent implements OnInit {
   demos : Demo[];
   flag : string;
   parentClick:Subject<void> = new Subject<void>();
+  @ViewChild(UserListComponent,{static:false}) userListComponent : UserListComponent;
+  @ViewChildren(ShowCaseComponent) showCaseComponents : ShowCaseComponent[];
+
   constructor(private demoService : DemoService) { }
 
   ngOnInit() {
@@ -40,7 +45,11 @@ export class DecoratorsComponent implements OnInit {
     }
     codeSnip.innerHTML = snip;
   } 
-  clickMe(){
+  startClock(){
     this.parentClick.next();
+    setInterval(()=>this.userListComponent.today = new Date(),1000);    
+  }
+  changeMessage(){
+    this.showCaseComponents.forEach((showCaseComponent,index) => showCaseComponent.message = "this is mesage: " + (index + 1));
   }
 }

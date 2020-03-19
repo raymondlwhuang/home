@@ -1,2 +1,5 @@
+as HTMLCollectionOf<HTMLElement>
+(ele:HTMLElement)=>ele.style.color="red"
 pipe(take(1)).subscribe;
 pipe(shareReplay()).subscribe //stop Subject Subscription is triggered twice
+{{today | date: 'hh:mm:ss'}}
