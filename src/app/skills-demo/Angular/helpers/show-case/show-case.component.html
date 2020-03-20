@@ -1,9 +1,9 @@
-<div [ngSwitch]="true">
+<div [ngSwitch]="true" class="flex-horizontal">
+    <h4>{{message}}</h4>
     <div *ngSwitchCase="flag == 'ViewChildren'" class="demo-container">
-        {{today}}
-        <p>{{message}}</p>
+        {{today | date : 'hh:mm:ss'}}
     </div>
     <div *ngSwitchDefault>
-        <h3>Please make your selection for show case</h3>
+        
     </div>
 </div>

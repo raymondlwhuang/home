@@ -3,7 +3,8 @@
 </textarea>
 
 <div>
-    <p>{{message}} {{today | date: 'hh:mm:ss'}}</p>
+    <p>{{today | date: 'hh:mm:ss'}}</p>
+    <p>{{message}}</p>
     <p> 
         Select a User for input/output show:
         <select #selectRef [(ngModel)]="selectedOption" (change)="renderNewResult()">

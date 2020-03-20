@@ -18,7 +18,9 @@ export class DecoratorsComponent implements OnInit {
   parentClick:Subject<void> = new Subject<void>();
   @ViewChild(UserListComponent,{static:false}) userListComponent : UserListComponent;
   @ViewChildren(ShowCaseComponent) showCaseComponents : ShowCaseComponent[];
-
+  indicator: number = 0;
+  stop : any;
+  buttonMsg :string = "Start Clock";
   constructor(private demoService : DemoService) { }
 
   ngOnInit() {
@@ -29,13 +31,12 @@ export class DecoratorsComponent implements OnInit {
   }
   renderNewResult(option?:any){
     let snip = '';
-    let output = '';
     let codeSnip = document.getElementById("code-snip");
+    this.flag = option.value;
     if(option.value != '') {
       codeSnip.className = "add-border";
       this.demos.forEach((result) => {
         if(option.value == result.name){
-          this.flag = option.value;
           result.snip.forEach(element => snip += element + '</br>');
         } 
       });
@@ -45,11 +46,24 @@ export class DecoratorsComponent implements OnInit {
     }
     codeSnip.innerHTML = snip;
   } 
-  startClock(){
+  startClock(indicator,element){
+    this.indicator = indicator;
     this.parentClick.next();
-    setInterval(()=>this.userListComponent.today = new Date(),1000);    
+    if(indicator) {
+      this.stop = setInterval(()=>element.today = new Date(),1000);
+      this.buttonMsg = "Stop Clock"
+    }
+    else{
+      clearInterval(this.stop);
+      this.buttonMsg = "Start Clock";
+    } 
   }
-  changeMessage(){
-    this.showCaseComponents.forEach((showCaseComponent,index) => showCaseComponent.message = "this is mesage: " + (index + 1));
+  changeMessage(indicator,i : number){
+    this.showCaseComponents.forEach((showCaseComponent,index) => {
+      if(index == i) {
+        this.startClock(indicator,showCaseComponent);
+        showCaseComponent.message = "Child " + (index + 1) +" had been Clicked";
+      };
+  });
   }
 }

@@ -19,21 +19,24 @@
                 <h3>Show Case</h3>
                 <div [ngSwitch]="true">
                     <div *ngSwitchCase="flag == 'Input' || flag =='Output' || flag =='ViewChild'" class="demo-container">
+                        this flag is: {{flag}}
                         <div class="flex-horizontal">
                             <app-user-list [parentClick]="parentClick" (onSelect)="onSelect($event)"></app-user-list>
-                            <button (click)="startClock()">Start Clock</button>
+                            <button (click)="startClock(!indicator,userListComponent)">{{buttonMsg}}</button>
                         </div>
                         <app-user  [user]="user"></app-user>
                         <app-user-applications  [user]="user"></app-user-applications>
                     </div>
                     <div *ngSwitchCase="flag == 'ViewChildren'" class="demo-container">
-                        <button (click)="changeMessage()">Message</button>
-                        <app-show-case [flag]="flag"></app-show-case>
-                        <app-show-case [flag]="flag"></app-show-case>
-                        <app-show-case [flag]="flag"></app-show-case>
+                        <button (click)="changeMessage(true,0)">Child 1</button>
+                        <button (click)="changeMessage(true,1)">Child 2</button>
+                        <button (click)="changeMessage(true,2)">Child 3</button>
+                        <app-show-case [parentClick]="parentClick" [flag]="flag"></app-show-case>
+                        <app-show-case [parentClick]="parentClick" [flag]="flag"></app-show-case>
+                        <app-show-case [parentClick]="parentClick" [flag]="flag"></app-show-case>
                     </div>
                     <div *ngSwitchDefault>
-                        <h3>Please make your selection for show case</h3>
+                            <app-show-case [flag]="flag"></app-show-case>
                     </div>
                 </div>
         

@@ -22,7 +22,7 @@ export class UserListComponent implements OnInit,AfterViewInit {
   ngOnInit() {
     this.userService.getUsers().subscribe(data => this.users = data);
     this.parentClick.pipe(shareReplay()).subscribe(()=>{
-      this.message = 'Message from child: Parent Button Clicked,Clock Started Now!';
+      this.message = !this.message ? 'Had used ViewChild to update child message here' : '';
       let selected =  document.querySelectorAll("div p:first-child");
        selected.forEach((ele:HTMLElement)=>ele.style.color="red");
       });

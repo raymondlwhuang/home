@@ -3,3 +3,7 @@ as HTMLCollectionOf<HTMLElement>
 pipe(take(1)).subscribe;
 pipe(shareReplay()).subscribe //stop Subject Subscription is triggered twice
 {{today | date: 'hh:mm:ss'}}
+document.querySelectorAll('.'+className);
+this.renderer.setStyle(this.elmRef.nativeElement, 'border-radius', this.appRoundBlock);
+
+create and use custom direcive
