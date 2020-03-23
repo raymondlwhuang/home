@@ -15,12 +15,16 @@ export class DecoratorsComponent implements OnInit {
   user: User;
   demos : Demo[];
   flag : string;
+  message : string = 'Please make your selection for show case';
+  output = '';
+  helpPath = '';
   parentClick:Subject<void> = new Subject<void>();
   @ViewChild(UserListComponent,{static:false}) userListComponent : UserListComponent;
   @ViewChildren(ShowCaseComponent) showCaseComponents : ShowCaseComponent[];
   indicator: number = 0;
   stop : any;
   buttonMsg :string = "Start Clock";
+  viewChildrenButton: any =['Child 1','Child 2','Child 3'];
   constructor(private demoService : DemoService) { }
 
   ngOnInit() {
@@ -38,12 +42,19 @@ export class DecoratorsComponent implements OnInit {
       this.demos.forEach((result) => {
         if(option.value == result.name){
           result.snip.forEach(element => snip += element + '</br>');
+          this.output = '';
+          result.output.forEach(element => this.output += element + '</br>');
+          this.helpPath = result.helpPath;
         } 
       });
     }
     else {
       codeSnip.classList.remove('add-border');
+      this.message = 'Please make your selection for show case';
     }
+    this.buttonMsg = "Start Clock";
+    this.indicator = 0;
+    clearInterval(this.stop);
     codeSnip.innerHTML = snip;
   } 
   startClock(indicator,element){
@@ -61,8 +72,8 @@ export class DecoratorsComponent implements OnInit {
   changeMessage(indicator,i : number){
     this.showCaseComponents.forEach((showCaseComponent,index) => {
       if(index == i) {
-        this.startClock(indicator,showCaseComponent);
-        showCaseComponent.message = "Child " + (index + 1) +" had been Clicked";
+        //this.startClock(indicator,showCaseComponent);
+        showCaseComponent.message = "Child " + (index + 1) +" button had been Clicked";
       };
   });
   }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-portfolio',
@@ -7,14 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PortfolioComponent implements OnInit {
   portfolios = [
-    { website:'http://driving.ca', url: '../../assets/images/driving.png',show: false },
-    { website:'http://www.livingdeal.com', url: '../../assets/images/livingdeal.png',show: false },
-    { website:'https://fansunited.org/', url: '../../assets/images/fansunited.png',show: false },
-    { website:'http://o.canada.com', url: '../../assets/images/ocanada.png',show: false },
-    { website:'http://www.windsorstar.com', url: '../../assets/images/windsorstar.png',show: false },
-    { website:'http://www.edmontonjournal.com', url: '../../assets/images/edmontonjournal.png',show: false },
-    { website:'http://www.calgaryherald.com', url: '../../assets/images/calgaryherald.png',show: false },
-    { website:'http://ernie.com/', url: '../../assets/images/ernie.png',show: false }
+    { website:'http://driving.ca', url: environment.helpUrl+'/images/driving.png',show: false },
+    { website:'http://www.livingdeal.com', url: environment.helpUrl+'/images/livingdeal.png',show: false },
+    { website:'https://fansunited.org/', url: environment.helpUrl+'/images/fansunited.png',show: false },
+    { website:'http://o.canada.com', url: environment.helpUrl+'/images/ocanada.png',show: false },
+    { website:'http://www.windsorstar.com', url: environment.helpUrl+'/images/windsorstar.png',show: false },
+    { website:'http://www.edmontonjournal.com', url: environment.helpUrl+'/images/edmontonjournal.png',show: false },
+    { website:'http://www.calgaryherald.com', url: environment.helpUrl+'/images/calgaryherald.png',show: false },
+    { website:'http://ernie.com/', url: environment.helpUrl+'/images/ernie.png',show: false }
   ]
   constructor() { }
 

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: ''
+  apiUrl: '',
+  helpUrl: window.location.origin + '/assets'
 };
 
 /*

@@ -4,8 +4,16 @@ img {
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-.flex-horizontal {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+
+.add-border {
+    border: solid 1px;
+}
+.demo-container {
+    margin: 10px;
+    border: solid;
+    padding: 5px;
+}
+.section-container {
+    margin: 10px;
+    padding: 5px;
 }

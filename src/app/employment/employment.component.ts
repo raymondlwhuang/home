@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-employment',
@@ -8,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class EmploymentComponent implements OnInit {
   slideIndex = 0;
   slides : any;
+  imgUrl1 = environment.helpUrl+'/images/me1.jpg';
+  imgUrl2 = environment.helpUrl+'/images/me2.jpg';
   constructor() { }
 
   ngOnInit() {

@@ -38,6 +38,8 @@ import { DecoratorsComponent } from './skills-demo/Angular/decorators/decorators
 import { ChangeDetectionComponent } from './skills-demo/Angular/change-detection/change-detection.component';
 import { DecoratorsModule } from './skills-demo/Angular/decorators/decorators.module';
 import { ShowCaseComponent } from './skills-demo/Angular/helpers/show-case/show-case.component';
+import { MediaQueryFlexboxDirective } from './_directives/media-query-flexbox.directive';
+import { FlexItemDirective } from './_directives/flex-item.directive';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import { ShowCaseComponent } from './skills-demo/Angular/helpers/show-case/show-
     PreShowComponent,
     DecoratorsComponent,
     ChangeDetectionComponent,
-    ShowCaseComponent
+    ShowCaseComponent,
+    MediaQueryFlexboxDirective,
+    FlexItemDirective
   ],
   imports: [
     BrowserModule,

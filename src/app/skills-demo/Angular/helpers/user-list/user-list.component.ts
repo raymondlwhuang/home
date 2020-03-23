@@ -14,7 +14,7 @@ export class UserListComponent implements OnInit,AfterViewInit {
   selectedOption: User = {email: '',firstName: '',lastName: '',yearsActive: null};
   @Output() onSelect: EventEmitter<User>  = new EventEmitter;
   @Input() parentClick: Subject <void>;
-  @ViewChild('selectRef', {static: false}) selectEleRef : ElementRef;
+  //@ViewChild('selectRef', {static: false}) selectEleRef : ElementRef;
   today: Date = new Date();
   message : string;
   constructor(private userService : UserService) { }
@@ -28,7 +28,7 @@ export class UserListComponent implements OnInit,AfterViewInit {
       });
   }
   ngAfterViewInit(){
-    this.selectEleRef.nativeElement.focus();
+    //this.selectEleRef.nativeElement.focus();
   }
   renderNewResult(){
     this.onSelect.emit(this.selectedOption);

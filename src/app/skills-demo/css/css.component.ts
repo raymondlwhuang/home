@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./css.component.css']
 })
 export class CssComponent implements OnInit {
-
+  url = window.location.origin;
   constructor() { 
   }
 

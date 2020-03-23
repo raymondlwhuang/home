@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Employment} from '../_models/employment';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class EmploymentService {
     return [
       {
         company: 'Asigra Ltd.',
-        imgUrl: '../../assets/images/asigra.PNG',
+        imgUrl: environment.helpUrl+'/images/asigra.PNG',
         period: 'Web Developer, September 2017 – November 2019',
         location: 'Toronto / Ontario',
         detail: {
@@ -36,7 +37,7 @@ export class EmploymentService {
       },
       {
         company: 'Formative Innovations Inc.',
-        imgUrl: '../../assets/images/formative.PNG',
+        imgUrl: environment.helpUrl+'/images/formative.PNG',
         period: 'Web Developer, July 2017 – August 2017',
         location: 'Toronto / Ontario',
         detail: {
@@ -62,7 +63,7 @@ export class EmploymentService {
       },
       {
         company: 'Postmedia Network Inc.',
-        imgUrl: '../../assets/images/postmedia.PNG',
+        imgUrl: environment.helpUrl+'/images/postmedia.PNG',
         period: 'Web Developer, December 2012 – July 2017',
         location: 'Toronto / Ontario',
         detail: {
@@ -98,7 +99,7 @@ export class EmploymentService {
       },
       {
         company: 'Mundomedia Ltd.',
-        imgUrl: '../../assets/images/mundomedia.png',
+        imgUrl: environment.helpUrl+'/images/mundomedia.png',
         period: 'Web Developer, February 2011 - December 2012',
         location: 'Markham / Ontario',
         detail: {
@@ -128,7 +129,7 @@ export class EmploymentService {
       },
       {
         company: 'Quasimodo Ltd.',
-        imgUrl: '../../assets/images/quasimodo.png',
+        imgUrl: environment.helpUrl+'/images/quasimodo.png',
         period: 'System Developer/Programmer, February 1999 - June 2010',
         location: 'Markham / Ontario',
         detail: {
@@ -169,7 +170,7 @@ export class EmploymentService {
       },
       {
         company: 'Costi Immigrant Services',
-        imgUrl: '../../assets/images/costi.jpg',
+        imgUrl: environment.helpUrl+'/images/costi.jpg',
         period: 'Computer Technician/Programmer, January 1998 - February 1999',
         location: 'Toronto / Ontario',
         detail: {

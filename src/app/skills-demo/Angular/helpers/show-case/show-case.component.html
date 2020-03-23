@@ -1,9 +1,16 @@
-<div [ngSwitch]="true" class="flex-horizontal">
+<div [ngSwitch]="true" appMediaQueryFlexbox>
     <h4>{{message}}</h4>
-    <div *ngSwitchCase="flag == 'ViewChildren'" class="demo-container">
-        {{today | date : 'hh:mm:ss'}}
+    <div *ngSwitchCase="flag == 'ViewChildren'">
     </div>
     <div *ngSwitchDefault>
-        
+        {{today | date : 'hh:mm:ss'}}        
+    </div>
+    <div>
+        <button *ngIf="outputText && outputText!=''"  id="show-code" mat-raised-button color="primary" (click)="showCode()">Show Code</button>
+        <textarea name="" id="output" rows="10" readonly>
+        {{outputText}}
+        </textarea>       
+    
     </div>
 </div>
+

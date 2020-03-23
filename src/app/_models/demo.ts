@@ -3,4 +3,5 @@ export interface Demo {
     name: string;
     snip: [];
     output?: [];
+    helpPath?: string;
 }

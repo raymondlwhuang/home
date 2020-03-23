@@ -4,28 +4,8 @@
     font-weight: 700;
     margin: 10px;    
 }
-h1 {
-    font-family: sans-serif;
-}
-.img-container{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-.images {
-    flex-basis: 300px;
-    min-width: 300px;
-    padding: 5px 5px;
-}
 img{
     border-radius: 20px;
     width: 100%;
-}
-@media all and (max-width: 599px) {
-    .img-container {
-        display: block;
-    }
-    .img-container .images img{
-        width: 100%;
-    }        
+    padding: 5px 5px;
 }
