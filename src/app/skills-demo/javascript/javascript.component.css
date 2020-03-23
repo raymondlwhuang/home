@@ -1,14 +1,5 @@
-.main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-}
-.main div, .main iframe {
-    flex-basis: 0;
-    flex: 1 1 0;
+.main div {
     padding: 10px;
-    min-height: 300px;
 }
 .main div a {
     margin: 0 10px;
@@ -20,16 +11,4 @@ h2 {
 li {
     list-style-type: initial;
     list-style-position: inside;
-}
-@media all and (max-width: 599px){
-    .main {
-        display: block;
-    }
-    .main div {
-        min-height: initial;
-        width: 100%;
-    }
-    .main div, .main iframe {
-        width: 100%;
-    }
 }

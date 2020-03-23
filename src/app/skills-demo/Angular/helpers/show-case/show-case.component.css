@@ -1,3 +1,6 @@
 #output {
     display: none;
 }
+textarea {
+    margin-top: 10px;
+}

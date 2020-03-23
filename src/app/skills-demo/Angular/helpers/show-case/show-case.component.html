@@ -1,9 +1,12 @@
-<div [ngSwitch]="true" appMediaQueryFlexbox>
-    <h4>{{message}}</h4>
-    <div *ngSwitchCase="flag == 'ViewChildren'">
-    </div>
-    <div *ngSwitchDefault>
-        {{today | date : 'hh:mm:ss'}}        
+<div [ngSwitch]="true">
+    <div appMediaQueryFlexbox>
+        <h4>{{message}}</h4>
+        <div *ngSwitchCase="flag == 'ViewChildren'">
+        </div>
+        <div *ngSwitchDefault>
+            {{today | date : 'hh:mm:ss'}}        
+        </div>
+    
     </div>
     <div>
         <button *ngIf="outputText && outputText!=''"  id="show-code" mat-raised-button color="primary" (click)="showCode()">Show Code</button>

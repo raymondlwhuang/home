@@ -17,7 +17,7 @@ export class ShowCaseComponent implements OnInit {
   @Input() demout : string='';
   @Input() helpPath : string='';
   dispUrl : string = environment.helpUrl+"/help/";
-  outputText : any;
+  outputText : any = "";
   show : boolean = true;
   constructor(private demoService : DemoService) { }
 

@@ -1,14 +1,4 @@
-.employment-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
 .employment-inner-box{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
     max-width: 900px;
     margin: 20px;
 }
@@ -61,13 +51,4 @@ p{
 }
 img {
     border-radius: 35px;
-}
-@media all and (max-width: 599px) {
-    .employment-container{
-        display: block;
-        margin: 0 20px;
-    }
-    .employment-inner-box{
-        display: block;
-    }
 }

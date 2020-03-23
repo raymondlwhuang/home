@@ -4,10 +4,6 @@
     font-size: 20px;
 }
 .img-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     padding-bottom: 50px;
 }
  .images{
