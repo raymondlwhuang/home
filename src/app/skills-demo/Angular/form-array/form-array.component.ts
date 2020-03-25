@@ -12,10 +12,7 @@ export class FormArrayComponent {
     submitted : boolean = false;
     angForm = new FormGroup({
       name : new FormControl('', Validators.required),
-      email : new FormControl('', Validators.required),
       phone : new FormControl('', Validators.required),
-      website : new FormControl(''),
-      picture : new FormControl(''),
       location : new FormGroup({
         address: new FormControl('', Validators.required),
         postalCode: new FormControl('', Validators.required),
@@ -23,7 +20,6 @@ export class FormArrayComponent {
         countryCode: new FormControl('', Validators.required),
         region: new FormControl('', Validators.required),
       }),
-      summary : new FormControl(''),
       highlights: new FormArray([new FormControl('')]),
       works : new FormArray([this.addWorkFormGroup()])
     });  
@@ -39,11 +35,17 @@ export class FormArrayComponent {
     } 
     onFormSubmit(): void {
       this.submitted = true;
-      console.log(this.angForm.valid);
-      document.getElementById('output').innerText = JSON.stringify(this.angForm.value);
+      if(this.angForm.valid){
+        document.getElementById('output').innerHTML = JSON.stringify(this.angForm.value, undefined, 4);
+      }
     } 
     addHighlightField() { 
-      (<FormArray>this.highlights).push(new FormControl('', Validators.required)); 
+      let isOKtoAdd = true;
+      for(let i=0;i<this.highlights.length;i++) {
+        if(this.highlights.value=='') isOKtoAdd = false;
+      }
+      if(isOKtoAdd) (<FormArray>this.highlights).push(new FormControl('', Validators.required)); 
+      else alert('Previous hightlight is empty');
     }
   
     deleteHighlightField(index: number,event) {
@@ -61,8 +63,16 @@ export class FormArrayComponent {
       return workFormGroup;
     }  
     addWork() {
-      let test = this.addWorkFormGroup();
-      (<FormArray>this.works).push(test); 
+      let isOKtoAdd = true;
+      console.log(this.works.value);
+      for(let i=0;i<this.works.length;i++) {
+        console.log(this.works.value[i]);
+        if(this.works.value[i].company=='' || this.works.value[i].position=='') isOKtoAdd = false;
+      }
+      if(isOKtoAdd) (<FormArray>this.works).push(this.addWorkFormGroup());
+      else alert('Previous work required field is empty');
+
+       
     }
   
     deleteWork(index: number,event) {

@@ -18,7 +18,8 @@ footer {
     background: #1b4f1b;
     width: 100%;
     color: #fff;
-    text-align: center;    
+    text-align: center; 
+    z-index: 5;   
 }
 @media all and (max-width: 599px){
     .nav-bar {

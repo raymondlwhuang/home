@@ -1,3 +1,6 @@
+.container {
+    margin: 30px;
+}
 .error{
     color: red;
     font-size: 20px;
@@ -15,11 +18,21 @@
   
   .form-container>div {
     flex: 0 50%;
-    border: red solid;
+    margin-top: 5px;
     box-sizing:border-box
   }
+  figure {
+      border: solid 1px;
+      padding: 5px;
+  }
+  figcaption {
+      text-align: center;
+      background-color: lightgray;
+  }
+  .works .form-control {
+      width: auto;
+  }
   .add-box {
-    float: left;
     width: 80%;
     margin-right: 35px;
    }
