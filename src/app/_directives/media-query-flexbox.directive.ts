@@ -24,13 +24,13 @@ export class MediaQueryFlexboxDirective implements OnInit {
       this.renderer.setStyle(this.elmRef.nativeElement, 'display', this.mobileDisplay);
     } else {
       this.renderer.setStyle(this.elmRef.nativeElement, 'display', "flex");
+      this.renderer.setStyle(this.elmRef.nativeElement, 'justify-content', this.justifyContent);
+      this.renderer.setStyle(this.elmRef.nativeElement, 'flex-wrap', this.flexWrap);
       this.renderer.setStyle(this.elmRef.nativeElement, 'flex-direction', this.flexDirection);
       if(this.justifyContent=="center" && !this.alignItems) {
         this.renderer.setStyle(this.elmRef.nativeElement, 'align-items', 'center');
 
       }
-      this.renderer.setStyle(this.elmRef.nativeElement, 'justify-content', this.justifyContent);
-      this.renderer.setStyle(this.elmRef.nativeElement, 'flex-wrap', this.flexWrap);
     }
   }
 }

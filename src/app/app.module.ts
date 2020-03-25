@@ -40,6 +40,7 @@ import { DecoratorsModule } from './skills-demo/Angular/decorators/decorators.mo
 import { ShowCaseComponent } from './skills-demo/Angular/helpers/show-case/show-case.component';
 import { MediaQueryFlexboxDirective } from './_directives/media-query-flexbox.directive';
 import { FlexItemDirective } from './_directives/flex-item.directive';
+import { FormArrayComponent } from './skills-demo/Angular/form-array/form-array.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { FlexItemDirective } from './_directives/flex-item.directive';
     ChangeDetectionComponent,
     ShowCaseComponent,
     MediaQueryFlexboxDirective,
-    FlexItemDirective
+    FlexItemDirective,
+    FormArrayComponent
   ],
   imports: [
     BrowserModule,
