@@ -1,0 +1,28 @@
+.error{
+    color: red;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+  .pad{
+    margin-right: 10px;
+    margin-top: 10px;
+  }
+  .form-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .form-container>div {
+    flex: 0 50%;
+    border: red solid;
+    box-sizing:border-box
+  }
+  .add-box {
+    float: left;
+    width: 80%;
+    margin-right: 35px;
+   }
+  textarea {
+      width: 100%;
+  }
