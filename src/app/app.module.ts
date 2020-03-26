@@ -41,6 +41,9 @@ import { ShowCaseComponent } from './skills-demo/Angular/helpers/show-case/show-
 import { MediaQueryFlexboxDirective } from './_directives/media-query-flexbox.directive';
 import { FlexItemDirective } from './_directives/flex-item.directive';
 import { FormArrayComponent } from './skills-demo/Angular/form-array/form-array.component';
+import { SnackBarComponent } from './snack-bar/snack-bar.component';
+import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { HoverItemDirective } from './_directives/hover-item.directive';
 
 @NgModule({
   declarations: [
@@ -64,7 +67,9 @@ import { FormArrayComponent } from './skills-demo/Angular/form-array/form-array.
     ShowCaseComponent,
     MediaQueryFlexboxDirective,
     FlexItemDirective,
-    FormArrayComponent
+    FormArrayComponent,
+    SnackBarComponent,
+    HoverItemDirective
   ],
   imports: [
     BrowserModule,
@@ -82,16 +87,18 @@ import { FormArrayComponent } from './skills-demo/Angular/form-array/form-array.
     MatIconModule,
     MatListModule,
     DecoratorsModule,
+    MatSnackBarModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     {provide: APP_BASE_HREF, useValue: ''},
-
+    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},
     // provider used to create fake backend
     fakeBackendProvider    
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [SnackBarComponent],
 })
 export class AppModule { }

@@ -12,27 +12,30 @@ import { DemoService } from 'src/app/_services/demo.service';
 export class ShowCaseComponent implements OnInit {
   today : Date = new Date ();
   message : string;
-  @Input() flag : string;
-  @Input() parentClick : Subject<void> = new Subject<void>();
+  @Input() showCaseFlag : Subject<string>;
+  @Input() parentClick : Subject<void>;
   @Input() demout : string='';
-  @Input() helpPath : string='';
-  dispUrl : string = environment.helpUrl+"/help/";
+  @Input() helpPath : Subject<string>;
   outputText : any = "";
   show : boolean = true;
+  flag : string;
   constructor(private demoService : DemoService) { }
 
   ngOnInit() {
-    this.message = (!this.flag || this.flag=='')? 'Please make your selection for show case' : 'Demo of: ' + this.flag.charAt(0).toUpperCase() + this.flag.slice(1);
-    if(this.helpPath && this.helpPath != '') this.demoService.getHelpFile(this.helpPath).subscribe(
-      data=> this.outputText = data, //console.log('HTTP response', data),
-      err => console.log('HTTP Error', err.text()),
-      () => console.log('HTTP request completed.')
-    );
-    this.parentClick.subscribe(()=>this.message="Button Clicked");
-    // this.parentClick.pipe(shareReplay()).subscribe(()=>{
-    //   alert(1);
-    //   this.message="Button Clicked";
-    // });    
+    this.showCaseFlag.subscribe(msg=>{
+      this.flag = msg;
+      if(msg)
+        this.message = 'Demo of: ' + msg.charAt(0).toUpperCase() + msg.slice(1);
+      else {
+        this.show = true;
+        this.outputText='';
+        this.message = 'Please make your selection for show case';
+      }
+    });
+    this.helpPath.pipe(shareReplay()).subscribe(data=>{
+      if(data) this.demoService.getHelpFile(data).subscribe(outText=>this.outputText=outText);
+    });
+    this.parentClick.pipe(shareReplay()).subscribe(()=>this.message="Button Clicked");
   }
   showCode(){
     if(this.show) {
@@ -44,7 +47,6 @@ export class ShowCaseComponent implements OnInit {
       this.show = true;
       document.getElementById('output').removeAttribute('style');
       document.getElementById('show-code').innerText = 'Show Code';
-
     }
   }
 }

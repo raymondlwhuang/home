@@ -17,7 +17,8 @@ export class DecoratorsComponent implements OnInit {
   flag : string;
   message : string = 'Please make your selection for show case';
   output = '';
-  helpPath = '';
+  showCaseFlag:Subject<string> = new Subject<string>();
+  helpPath:Subject<string> = new Subject<string>();
   parentClick:Subject<void> = new Subject<void>();
   @ViewChild(UserListComponent,{static:false}) userListComponent : UserListComponent;
   @ViewChildren(ShowCaseComponent) showCaseComponents : ShowCaseComponent[];
@@ -37,6 +38,7 @@ export class DecoratorsComponent implements OnInit {
     let snip = '';
     let codeSnip = document.getElementById("code-snip");
     this.flag = option.value;
+    this.showCaseFlag.next(option.value);
     if(option.value != '') {
       codeSnip.className = "add-border";
       this.demos.forEach((result) => {
@@ -44,7 +46,7 @@ export class DecoratorsComponent implements OnInit {
           result.snip.forEach(element => snip += element + '</br>');
           this.output = '';
           result.output.forEach(element => this.output += element + '</br>');
-          this.helpPath = result.helpPath;
+          this.helpPath.next(result.helpPath);
         } 
       });
     }

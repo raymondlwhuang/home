@@ -4,7 +4,7 @@
         <mat-tab-group>
             <mat-tab label="Build in Decorators"> 
                 <div appMediaQueryFlexbox>
-                    <div appFlexItem [flexBasis]="200">
+                    <div appFlexItem appHoverItem [flexBasis]="200">
                         <mat-form-field>
                             <mat-label>Your selection</mat-label>
                             <mat-select  (selectionChange)="renderNewResult($event)">
@@ -31,12 +31,12 @@
                         <button mat-raised-button color="primary" (click)="changeMessage(true,0)">{{viewChildrenButton[0]}}</button>
                         <button mat-raised-button color="primary" (click)="changeMessage(true,1)">{{viewChildrenButton[1]}}</button>
                         <button mat-raised-button color="primary" (click)="changeMessage(true,2)">{{viewChildrenButton[2]}}</button>
-                        <app-show-case [parentClick]="parentClick" [flag]="flag"></app-show-case>
-                        <app-show-case [parentClick]="parentClick" [flag]="flag"></app-show-case>
-                        <app-show-case [parentClick]="parentClick" [flag]="flag"></app-show-case>
+                        <app-show-case [parentClick]="parentClick" [showCaseFlag]="showCaseFlag" [helpPath]="helpPath"></app-show-case>
+                        <app-show-case [parentClick]="parentClick" [showCaseFlag]="showCaseFlag" [helpPath]="helpPath"></app-show-case>
+                        <app-show-case [parentClick]="parentClick" [showCaseFlag]="showCaseFlag" [helpPath]="helpPath"></app-show-case>
                     </div>
                     <div *ngSwitchDefault>
-                        <app-show-case  [flag]="flag" [demout]="output" [helpPath]="helpPath"></app-show-case>
+                        <app-show-case  [parentClick]="parentClick" [showCaseFlag]="showCaseFlag" [demout]="output" [helpPath]="helpPath"></app-show-case>
                     </div>
                 </div>
         

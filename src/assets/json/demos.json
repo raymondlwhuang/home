@@ -315,5 +315,20 @@
 		],
 		"output": ["<div appMediaQueryFlexbox></div>"],
 		"helpPath" : "angular/media-query-flexbox.directive.txt"
+	},
+	{ 
+		"group":"decorator",
+		"name": "HostListener", 
+		"snip": ["@HostListener('mouseover') onMouseOver() {this.ishovering = true;}"],
+		"output": [""],
+		"helpPath" : "angular/hover-item.directive.txt"
+	},
+	{ 
+		"group":"decorator",
+		"name": "HostBinding", 
+		"snip": ["@HostBinding('class.item-mouse-over') ishovering: boolean;"],
+		"output": [""],
+		"helpPath" : "angular/hover-item.directive.txt"
 	}
+	
 ]

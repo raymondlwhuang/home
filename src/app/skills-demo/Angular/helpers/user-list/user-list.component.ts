@@ -9,12 +9,11 @@ import { shareReplay } from 'rxjs/operators';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css']
 })
-export class UserListComponent implements OnInit,AfterViewInit {
+export class UserListComponent implements OnInit {
   users : User[];
   selectedOption: User = {email: '',firstName: '',lastName: '',yearsActive: null};
   @Output() onSelect: EventEmitter<User>  = new EventEmitter;
   @Input() parentClick: Subject <void>;
-  //@ViewChild('selectRef', {static: false}) selectEleRef : ElementRef;
   today: Date = new Date();
   message : string;
   constructor(private userService : UserService) { }
@@ -26,9 +25,6 @@ export class UserListComponent implements OnInit,AfterViewInit {
       let selected =  document.querySelectorAll("div p:first-child");
        selected.forEach((ele:HTMLElement)=>ele.style.color="red");
       });
-  }
-  ngAfterViewInit(){
-    //this.selectEleRef.nativeElement.focus();
   }
   renderNewResult(){
     this.onSelect.emit(this.selectedOption);

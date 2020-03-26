@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { SnackBarComponent } from 'src/app/snack-bar/snack-bar.component';
 
 @Component({
   selector: 'app-form-array',
@@ -22,7 +24,8 @@ export class FormArrayComponent {
       }),
       highlights: new FormArray([new FormControl('')]),
       works : new FormArray([this.addWorkFormGroup()])
-    });  
+    }); 
+    constructor(private _snackBar: MatSnackBar) {}
     get highlights(): FormArray {
       return this.angForm.get('highlights') as FormArray;
     } 
@@ -45,7 +48,12 @@ export class FormArrayComponent {
         if(this.highlights.value=='') isOKtoAdd = false;
       }
       if(isOKtoAdd) (<FormArray>this.highlights).push(new FormControl('', Validators.required)); 
-      else alert('Previous hightlight is empty');
+      else {
+        this._snackBar.openFromComponent(SnackBarComponent, {
+          duration: 5000,
+          data: 'Hightlight field is empty, add disabled'
+        });          
+      }
     }
   
     deleteHighlightField(index: number,event) {
@@ -64,15 +72,16 @@ export class FormArrayComponent {
     }  
     addWork() {
       let isOKtoAdd = true;
-      console.log(this.works.value);
       for(let i=0;i<this.works.length;i++) {
-        console.log(this.works.value[i]);
         if(this.works.value[i].company=='' || this.works.value[i].position=='') isOKtoAdd = false;
       }
       if(isOKtoAdd) (<FormArray>this.works).push(this.addWorkFormGroup());
-      else alert('Previous work required field is empty');
-
-       
+      else{
+        this._snackBar.openFromComponent(SnackBarComponent, {
+          duration: 5000,
+          data: 'Required field is empty, add disabled'
+        });
+      } 
     }
   
     deleteWork(index: number,event) {
