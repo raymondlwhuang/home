@@ -16,7 +16,6 @@ export class DemoService {
     return this.http.get<Demo[]>(this._url);
   }
   getHelpFile (helpPath : string) : Observable <any> {
-    console.log(this._helpUrl + helpPath);
     let test = this._helpUrl + helpPath;
     return this.http.get(test, { responseType: 'text' as 'json'});
   }

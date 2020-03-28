@@ -5,7 +5,6 @@ import { Demo } from 'src/app/_models/demo';
 import { Subject } from 'rxjs';
 import { UserListComponent } from '../helpers/user-list/user-list.component';
 import { ShowCaseComponent } from 'src/app/_helpers/show-case/show-case.component';
-import { InputHolder } from 'src/app/_models/input-holder';
 
 @Component({
   selector: 'app-decorators',
@@ -27,12 +26,9 @@ export class DecoratorsComponent implements OnInit {
   stop : any;
   buttonMsg :string = "Start Clock";
   viewChildrenButton: any =['Child 1','Child 2','Child 3'];
-  inputHolder : InputHolder;
-
   constructor(private demoService : DemoService) { }
 
   ngOnInit() {
-    this.inputHolder = {...this.inputHolder,group:'decorator'};
     this.demoService.getDemos().subscribe(items => this.demos = items.filter(item=>(item.group=='decorator' ||item.group==''))); 
   }
   onSelect(user : User) {
@@ -75,11 +71,11 @@ export class DecoratorsComponent implements OnInit {
       this.buttonMsg = "Start Clock";
     } 
   }
-  changeMessage(indicator,i : number){
+  changeMessage(i : number){
     this.showCaseComponents.forEach((showCaseComponent,index) => {
       if(index == i) {
         showCaseComponent.message = "Child " + (index + 1) +" button had been Clicked";
       };
-  });
+    });
   }
 }

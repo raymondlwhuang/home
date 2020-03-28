@@ -37,13 +37,18 @@ import { FunctionComponent } from './skills-demo/javascript/function/function.co
 import { DecoratorsComponent } from './skills-demo/Angular/decorators/decorators.component';
 import { ChangeDetectionComponent } from './skills-demo/Angular/change-detection/change-detection.component';
 import { DecoratorsModule } from './skills-demo/Angular/decorators/decorators.module';
-import { ShowCaseComponent } from './skills-demo/Angular/helpers/show-case/show-case.component';
+//import { ShowCaseComponent } from './skills-demo/Angular/helpers/show-case/show-case.component';
 import { MediaQueryFlexboxDirective } from './_directives/media-query-flexbox.directive';
 import { FlexItemDirective } from './_directives/flex-item.directive';
 import { FormArrayComponent } from './skills-demo/Angular/form-array/form-array.component';
 import { SnackBarComponent } from './snack-bar/snack-bar.component';
 import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { HoverItemDirective } from './_directives/hover-item.directive';
+import { AngularComponent } from './skills-demo/Angular/angular.component';
+import { AngOthersComponent } from './skills-demo/Angular/ang-others/ang-others.component';
+import { DemoSelectorComponent } from './_helpers/demo-selector/demo-selector.component';
+import { ShowCaseComponent } from './_helpers/show-case/show-case.component';
+import { DomComponent } from './skills-demo/javascript/dom/dom.component';
 
 @NgModule({
   declarations: [
@@ -63,13 +68,17 @@ import { HoverItemDirective } from './_directives/hover-item.directive';
     RxjsComponent,
     PreShowComponent,
     DecoratorsComponent,
+    AngularComponent,
     ChangeDetectionComponent,
     ShowCaseComponent,
     MediaQueryFlexboxDirective,
     FlexItemDirective,
     FormArrayComponent,
     SnackBarComponent,
-    HoverItemDirective
+    HoverItemDirective,
+    AngOthersComponent,
+    DemoSelectorComponent,
+    DomComponent
   ],
   imports: [
     BrowserModule,
