@@ -18,8 +18,8 @@ export class DemoSelectorComponent implements OnInit {
   @ViewChild(ShowCaseComponent,{static:false}) showCaseComponent : ShowCaseComponent;
   @ViewChildren(ShowCaseComponent) showCaseComponents : ShowCaseComponent[];
   demos : Demo[];
-  showCaseFlag : Subject<string> = new Subject<string>();
-  helpPath : Subject<string> = new Subject<string>();
+  // showCaseFlag : Subject<string> = new Subject<string>();
+  // helpPath : Subject<string> = new Subject<string>();
   parentClick: Subject<void> = new Subject<void>();
   flag: string;
   output: string;
@@ -55,7 +55,7 @@ export class DemoSelectorComponent implements OnInit {
     let codeSnip = document.getElementById("code-snip");
     let thisHolder : InputHolder;
     this.flag = option.value;
-    this.showCaseFlag.next(option.value);
+    //this.showCaseFlag.next(option.value);
     this.inputHolder = {...thisHolder,showCaseFlag:option.value};
     if(option.value != '') {
       codeSnip.className = "add-border";
@@ -64,7 +64,7 @@ export class DemoSelectorComponent implements OnInit {
           result.snip.forEach(element => snip += element + '</br>');
           this.output = '';
           result.output.forEach(element => this.output += element + '</br>');
-          this.helpPath.next(result.helpPath);
+          //this.helpPath.next(result.helpPath);
           thisHolder = this.inputHolder;
           this.inputHolder = {...thisHolder,helpPath:result.helpPath};
         } 

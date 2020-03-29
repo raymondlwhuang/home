@@ -1,19 +1,27 @@
-<div [ngSwitch]="true">
-    <div appMediaQueryFlexbox>
-        <h4>{{message}}</h4>
-        <div *ngSwitchCase="flag == 'ViewChildren'">
+<div class="section-container">
+    {{today | date : 'y/m/d hh:mm:ss'}}
+    <div [ngSwitch]="true">
+        <div appMediaQueryFlexbox>
+            <h4 *ngIf="inputHolder.imagesList==''">{{message}}</h4>
+            <h4 *ngIf="inputHolder.imagesList && inputHolder.imagesList!=''">Change Detection Stratergy</h4>
+            <div *ngSwitchCase="flag == 'ViewChildren'">
+            </div>
+            <div *ngSwitchDefault>
+                        
+            </div>
+        
         </div>
-        <div *ngSwitchDefault>
-            {{today | date : 'hh:mm:ss'}}        
+        <div>
+            <button *ngIf="this.inputHolder.helpPath && this.inputHolder.helpPath!=''"  id="show-code" mat-raised-button color="primary" (click)="showCode()">Show Code</button>
+            <textarea name="" id="output" rows="10" readonly>
+            {{outputText}}
+            </textarea>       
+        
         </div>
-    
+        
     </div>
-    <div>
-        <button *ngIf="outputText && outputText!=''"  id="show-code" mat-raised-button color="primary" (click)="showCode()">Show Code</button>
-        <textarea name="" id="output" rows="10" readonly>
-        {{outputText}}
-        </textarea>       
-    
+    <div class="slider" *ngIf="inputHolder.imagesList && inputHolder.imagesList!=''">
+        <img src={{inputHolder.imagesList}}>
     </div>
-</div>
 
+</div>

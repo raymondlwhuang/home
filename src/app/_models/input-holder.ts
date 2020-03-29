@@ -6,5 +6,6 @@ export interface InputHolder {
     showCaseFlag? : string;
     helpPath? : string;
     parentClick?: boolean;  
+    imagesList?: string;
 }
 

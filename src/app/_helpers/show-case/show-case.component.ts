@@ -12,7 +12,7 @@ import { InputHolder } from 'src/app/_models/input-holder';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ShowCaseComponent implements OnInit {
-  @Input() inputHolder : InputHolder = {showCaseFlag:'',demout:'',helpPath:''};
+  @Input() inputHolder : InputHolder = {showCaseFlag:'',demout:'',helpPath:'',imagesList:''};
   today : Date = new Date ();
   message : string;
   outputText : any = "";
@@ -37,6 +37,8 @@ export class ShowCaseComponent implements OnInit {
     if(this.inputHolder.parentClick) this.message="Button Clicked";
   }
   showCode(){
+    this.demoService.getHelpFile(this.inputHolder.helpPath).subscribe(outText=>this.outputText=outText);
+
     if(this.show) {
       this.show = false;
       document.getElementById('output').style.display = 'block';
