@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ViewChildren } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ViewChildren, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { DemoService } from 'src/app/_services/demo.service';
 import { Demo } from 'src/app/_models/demo';
 import { Subject } from 'rxjs';
@@ -10,38 +10,49 @@ import { InputHolder } from 'src/app/_models/input-holder';
 @Component({
   selector: 'app-demo-selector',
   templateUrl: './demo-selector.component.html',
-  styleUrls: ['./demo-selector.component.css']
+  styleUrls: ['./demo-selector.component.css'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class DemoSelectorComponent implements OnInit {
-  @Input() inputHolder : InputHolder = {group: ''};
+  @Input() public group : string;
   @ViewChild(UserListComponent,{static:false}) userListComponent : UserListComponent;
   @ViewChild(ShowCaseComponent,{static:false}) showCaseComponent : ShowCaseComponent;
   @ViewChildren(ShowCaseComponent) showCaseComponents : ShowCaseComponent[];
+  inputHolder : InputHolder = {group: ''};
   demos : Demo[];
   // showCaseFlag : Subject<string> = new Subject<string>();
-  // helpPath : Subject<string> = new Subject<string>();
-  parentClick: Subject<void> = new Subject<void>();
+  //helpPath : Subject<string> = new Subject<string>();
+  parentClick: Subject<boolean> = new Subject<false>();
   flag: string;
   output: string;
   message: string;
   buttonMsg : string = "Start Clock";
-  indicator : number = 0;
+  indicator : boolean = false;
   stop : any;
   user : User;
   viewChildrenButton: any =['Child 1','Child 2','Child 3'];
-  constructor(private demoService : DemoService) { }
+  constructor(
+    private demoService : DemoService,
+    private changeDetectionRf : ChangeDetectorRef
+    ) { }
 
   ngOnInit() {
-    this.demoService.getDemos().subscribe(items => this.demos = items.filter(item=>(item.group==this.inputHolder.group ||item.group==''))); 
+    this.demoService.getDemos().subscribe(items => this.demos = items.filter(item=>(item.group==this.group ||item.group==''))); 
   }
   startClock(indicator,element){
     this.indicator = indicator;
-    this.parentClick.next();
     if(indicator) {
-      this.stop = setInterval(()=>element.today = new Date(),1000);
+      //this.stop = setInterval(()=>element.today = new Date(),1000);
+      let _this = this;
+      this.stop = setInterval(()=>{
+        _this.userListComponent.today = new Date();
+        this.changeDetectionRf.markForCheck();
+      },1000);
+      this.parentClick.next(true);
       this.buttonMsg = "Stop Clock"
     }
     else{
+      this.parentClick.next(false);
       clearInterval(this.stop);
       this.buttonMsg = "Start Clock";
     } 
@@ -51,12 +62,13 @@ export class DemoSelectorComponent implements OnInit {
   }
 
   renderNewResult(option?:any){
+    this.parentClick.next(false);
     let snip = '';
     let codeSnip = document.getElementById("code-snip");
-    let thisHolder : InputHolder;
+    let thisHolder : InputHolder = this.inputHolder;
     this.flag = option.value;
     //this.showCaseFlag.next(option.value);
-    this.inputHolder = {...thisHolder,showCaseFlag:option.value};
+    this.inputHolder = {showCaseFlag:option.value};
     if(option.value != '') {
       codeSnip.className = "add-border";
       this.demos.forEach((result) => {
@@ -65,8 +77,7 @@ export class DemoSelectorComponent implements OnInit {
           this.output = '';
           result.output.forEach(element => this.output += element + '</br>');
           //this.helpPath.next(result.helpPath);
-          thisHolder = this.inputHolder;
-          this.inputHolder = {...thisHolder,helpPath:result.helpPath};
+          this.inputHolder = {showCaseFlag:option.value,helpPath:result.helpPath};
         } 
       });
     }
@@ -75,15 +86,17 @@ export class DemoSelectorComponent implements OnInit {
       this.message = 'Please make your selection for show case';
     }
     this.buttonMsg = "Start Clock";
-    this.indicator = 0;
+    this.indicator = false;
     clearInterval(this.stop);
     codeSnip.innerHTML = snip;
+    //this.changeDetectionRf.markForCheck();
+    
   } 
   changeMessage(i : number){
     this.showCaseComponents.forEach((showCaseComponent,index) => {
       if(index == i) {
         showCaseComponent.message = "Child " + (index + 1) +" button had been Clicked";
-        showCaseComponent.changeDetectionRf.detectChanges();
+        showCaseComponent.changeDetectionRf.markForCheck();
       };
     });
   }

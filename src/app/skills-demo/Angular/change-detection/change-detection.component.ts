@@ -10,7 +10,7 @@ import { InputHolder } from 'src/app/_models/input-holder';
   changeDetection : ChangeDetectionStrategy.OnPush
 })
 export class ChangeDetectionComponent implements OnInit {
-  inputHolder : InputHolder = {showCaseFlag:'',demout:'',helpPath:'',imagesList:''};
+  inputHolder : InputHolder = {showCaseFlag:'',demout:'',imagesList:''};
   pointer = 0;
   imagesList : Array<ImagesList>= environment.imagesList;
   intervalId: any;
@@ -23,9 +23,8 @@ export class ChangeDetectionComponent implements OnInit {
       let count = _this.countUp();
       let url = this.imagesList[count].url;
       _this.inputHolder = {...thisHolder,imagesList : url,showCaseFlag:''};
-      console.log(url);
       this.changeDetectRf.detectChanges();
-    },1000);
+    },3000);
   }
   countUp (){
     this.pointer++;

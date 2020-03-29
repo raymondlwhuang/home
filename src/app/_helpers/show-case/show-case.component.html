@@ -2,7 +2,7 @@
     {{today | date : 'y/m/d hh:mm:ss'}}
     <div [ngSwitch]="true">
         <div appMediaQueryFlexbox>
-            <h4 *ngIf="inputHolder.imagesList==''">{{message}}</h4>
+            <h4 *ngIf="!inputHolder.imagesList || inputHolder.imagesList==''">{{message}}</h4>
             <h4 *ngIf="inputHolder.imagesList && inputHolder.imagesList!=''">Change Detection Stratergy</h4>
             <div *ngSwitchCase="flag == 'ViewChildren'">
             </div>
@@ -12,7 +12,7 @@
         
         </div>
         <div>
-            <button *ngIf="this.inputHolder.helpPath && this.inputHolder.helpPath!=''"  id="show-code" mat-raised-button color="primary" (click)="showCode()">Show Code</button>
+            <button *ngIf="outputText!=''"  id="show-code" mat-raised-button color="primary" (click)="showCode()">Show Code</button>
             <textarea name="" id="output" rows="10" readonly>
             {{outputText}}
             </textarea>       

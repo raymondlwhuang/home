@@ -7,5 +7,5 @@ import { InputHolder } from 'src/app/_models/input-holder';
   styleUrls: ['./decorators.component.css']
 })
 export class DecoratorsComponent {
-  inputHolder : InputHolder = {group:'decorator'};
+  group : string = 'decorator';
 }

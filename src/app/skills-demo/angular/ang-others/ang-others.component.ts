@@ -7,7 +7,7 @@ import { InputHolder } from 'src/app/_models/input-holder';
   styleUrls: ['./ang-others.component.css']
 })
 export class AngOthersComponent implements OnInit {
-  inputHolder : InputHolder = {group:''};
+  group  = '';
   constructor() { }
 
   ngOnInit() {
