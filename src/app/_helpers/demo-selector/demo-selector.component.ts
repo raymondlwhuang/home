@@ -14,14 +14,12 @@ import { InputHolder } from 'src/app/_models/input-holder';
   changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class DemoSelectorComponent implements OnInit {
-  @Input() public group : string;
+  @Input() group : string;
   @ViewChild(UserListComponent,{static:false}) userListComponent : UserListComponent;
   @ViewChild(ShowCaseComponent,{static:false}) showCaseComponent : ShowCaseComponent;
   @ViewChildren(ShowCaseComponent) showCaseComponents : ShowCaseComponent[];
   inputHolder : InputHolder = {group: ''};
   demos : Demo[];
-  // showCaseFlag : Subject<string> = new Subject<string>();
-  //helpPath : Subject<string> = new Subject<string>();
   parentClick: Subject<boolean> = new Subject<false>();
   flag: string;
   output: string;
@@ -42,7 +40,6 @@ export class DemoSelectorComponent implements OnInit {
   startClock(indicator,element){
     this.indicator = indicator;
     if(indicator) {
-      //this.stop = setInterval(()=>element.today = new Date(),1000);
       let _this = this;
       this.stop = setInterval(()=>{
         _this.userListComponent.today = new Date();
@@ -67,7 +64,6 @@ export class DemoSelectorComponent implements OnInit {
     let codeSnip = document.getElementById("code-snip");
     let thisHolder : InputHolder = this.inputHolder;
     this.flag = option.value;
-    //this.showCaseFlag.next(option.value);
     this.inputHolder = {showCaseFlag:option.value};
     if(option.value != '') {
       codeSnip.className = "add-border";
@@ -76,7 +72,6 @@ export class DemoSelectorComponent implements OnInit {
           result.snip.forEach(element => snip += element + '</br>');
           this.output = '';
           result.output.forEach(element => this.output += element + '</br>');
-          //this.helpPath.next(result.helpPath);
           this.inputHolder = {showCaseFlag:option.value,helpPath:result.helpPath};
         } 
       });
@@ -89,8 +84,6 @@ export class DemoSelectorComponent implements OnInit {
     this.indicator = false;
     clearInterval(this.stop);
     codeSnip.innerHTML = snip;
-    //this.changeDetectionRf.markForCheck();
-    
   } 
   changeMessage(i : number){
     this.showCaseComponents.forEach((showCaseComponent,index) => {

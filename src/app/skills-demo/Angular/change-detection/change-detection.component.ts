@@ -1,7 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { ImagesList } from 'src/app/_models/images-list';
 import { InputHolder } from 'src/app/_models/input-holder';
+import { images } from 'src/app/_infrastructure/images';
+import { interval } from 'rxjs';
+import { AutoUnsubscribe } from 'src/app/_decorators/custom.decorator';
 
 @Component({
   selector: 'app-change-detection',
@@ -9,22 +11,23 @@ import { InputHolder } from 'src/app/_models/input-holder';
   styleUrls: ['./change-detection.component.css'],
   changeDetection : ChangeDetectionStrategy.OnPush
 })
-export class ChangeDetectionComponent implements OnInit {
-  inputHolder : InputHolder = {showCaseFlag:'',demout:'',imagesList:''};
+@AutoUnsubscribe()
+export class ChangeDetectionComponent implements OnInit, OnDestroy {
+  inputHolder : InputHolder = {showCaseFlag:'',demout:'',imagesList:''};;
   pointer = 0;
-  imagesList : Array<ImagesList>= environment.imagesList;
+  imagesList : Array<ImagesList>= images.imagesList;
   intervalId: any;
+  subscribe : any;
   constructor(private changeDetectRf : ChangeDetectorRef) { }
 
   ngOnInit() {
-    let _this = this;
-    this.intervalId = setInterval(()=>{
-      let thisHolder : InputHolder = _this.inputHolder;
-      let count = _this.countUp();
+    this.subscribe = interval(3000).subscribe(() => {
+      let thisHolder : InputHolder = this.inputHolder;
+      let count = this.countUp();
       let url = this.imagesList[count].url;
-      _this.inputHolder = {...thisHolder,imagesList : url,showCaseFlag:''};
+      this.inputHolder = {...thisHolder,imagesList : url,showCaseFlag:''};
       this.changeDetectRf.detectChanges();
-    },3000);
+    });    
   }
   countUp (){
     this.pointer++;
@@ -32,6 +35,5 @@ export class ChangeDetectionComponent implements OnInit {
     return this.pointer;
   }
   ngOnDestroy(): void {
-    clearInterval(this.intervalId);
   }
 }

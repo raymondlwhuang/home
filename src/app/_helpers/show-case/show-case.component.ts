@@ -1,7 +1,4 @@
-import { Component, OnInit, Input,OnChanges, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { Subject, BehaviorSubject, Observable, of } from 'rxjs';
-import { shareReplay } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
+import { Component, Input,OnChanges, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { DemoService } from 'src/app/_services/demo.service';
 import { InputHolder } from 'src/app/_models/input-holder';
 
@@ -11,9 +8,8 @@ import { InputHolder } from 'src/app/_models/input-holder';
   styleUrls: ['./show-case.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ShowCaseComponent implements OnInit,OnChanges {
+export class ShowCaseComponent implements OnChanges {
   @Input() inputHolder : InputHolder;
-  //@Input() helpPath : Subject<string>=new Subject<string>();
   today : Date = new Date ();
   message : string;
   outputText : any = "";
@@ -23,29 +19,7 @@ export class ShowCaseComponent implements OnInit,OnChanges {
               private demoService : DemoService,
               public changeDetectionRf : ChangeDetectorRef
               ) { }
-
-  ngOnInit() {
-    // this.helpPath.subscribe(path=>{
-    //   if(path) {
-    //     this.demoService.getHelpFile(path).subscribe(outText=>{
-    //       this.outputText=outText;
-    //       this.changeDetectionRf.markForCheck();
-    //     });
-  
-    //   }
-    // });
-
-  }
   ngOnChanges(){
-    // this.helpPath.subscribe(path=>{
-    //   if(path) {
-    //     this.demoService.getHelpFile(path).subscribe(outText=>{
-    //       this.outputText=outText;
-    //       this.changeDetectionRf.markForCheck();
-    //     });
-  
-    //   }
-    // });
     if(this.inputHolder.helpPath && this.inputHolder.helpPath!='') {
       this.demoService.getHelpFile(this.inputHolder.helpPath).subscribe(outText=>{
         this.outputText=outText;
@@ -61,15 +35,9 @@ export class ShowCaseComponent implements OnInit,OnChanges {
         this.outputText='';
         this.message = 'Please make your selection for show case';
       }
-
-    //this.flag = this.inputHolder.showCaseFlag;
-    //if(this.inputHolder.helpPath) this.demoService.getHelpFile(this.inputHolder.helpPath).subscribe(outText=>this.outputText=outText);
-
     if(this.inputHolder.parentClick) this.message="Button Clicked";
   }
   showCode(){
-//    this.demoService.getHelpFile(this.inputHolder.helpPath).subscribe(outText=>this.outputText=outText);
-
     if(this.show) {
       this.show = false;
       document.getElementById('output').style.display = 'block';

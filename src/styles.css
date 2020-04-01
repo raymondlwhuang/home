@@ -20,3 +20,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .item-mouse-over {
     background-color: lightgoldenrodyellow;
 }
+.sub-menu-tab {
+    background-color: #3F51B5;
+    color: #fff;
+    padding: 5px;
+    border: outset 5px;
+    box-sizing: border-box;
+}
