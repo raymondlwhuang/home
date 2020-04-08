@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { InputHolder } from 'src/app/_models/input-holder';
 
 @Component({
   selector: 'app-decorators',

@@ -15,3 +15,59 @@ export function AutoUnsubscribe(obs$ = []) {
         }
     }
 }
+export function Frozen(constructor: Function) {
+    Object.freeze(constructor);
+    Object.freeze(constructor.prototype);
+}
+
+export function basicDecorator(config) {
+    return function(target,key,descriptor){
+        const original = descriptor.value;
+        descriptor.value = function(...args: any[]){
+
+        }
+
+        return descriptor;
+    }
+
+}
+
+export function Emoji(){
+    return function(target,key){
+        let val = target[key];
+        const getter = ()=>{
+            return this.val;
+        }
+        const settter = (next)=>{
+            this.val = next;
+        }
+        Object.defineProperty(target,key,{
+            get: getter,
+            set: settter,
+            enumerable: true,
+            configurable: true,
+        })
+    }
+
+}
+export function HtmlConsole(config?) {
+    return function(target,key,descriptor){
+        const original = descriptor.value;
+        descriptor.value = function(...args: any[]){
+            let fireCaseOutput = document.getElementById(config.id);
+            args.forEach(arg=>{
+                if(!arg || arg =='') fireCaseOutput.innerHTML = '';
+                else {
+                    if (typeof arg == 'object') {
+                        fireCaseOutput.innerHTML += (JSON && JSON.stringify ? JSON.stringify(arg) : arg) + '<br />';
+                    } else {
+                        fireCaseOutput.innerHTML += arg + '<br />';
+                    }    
+                }
+                return arg;
+            });
+        }
+        return descriptor;
+    }
+
+}

@@ -5,5 +5,7 @@ pipe(shareReplay()).subscribe //stop Subject Subscription is triggered twice
 {{today | date: 'hh:mm:ss'}}
 document.querySelectorAll('.'+className);
 this.renderer.setStyle(this.elmRef.nativeElement, 'border-radius', this.appRoundBlock);
-
-create and use custom direcive
+html Select, Set focus to element not working the same way as mat-select
+https://angular.io/api/forms/SelectControlValueAccessor
+this.http.get("app/files/1.txt", { responseType: 'text' as 'json'})
+<div *ngFor="let pony of ponies; index as idx">

@@ -49,6 +49,7 @@ import { AngOthersComponent } from './skills-demo/Angular/ang-others/ang-others.
 import { DemoSelectorComponent } from './_helpers/demo-selector/demo-selector.component';
 import { ShowCaseComponent } from './_helpers/show-case/show-case.component';
 import { DomComponent } from './skills-demo/javascript/dom/dom.component';
+import { EscapeHtmlPipe } from './_pipes/keep-html.pipe';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { DomComponent } from './skills-demo/javascript/dom/dom.component';
     HoverItemDirective,
     AngOthersComponent,
     DemoSelectorComponent,
-    DomComponent
+    DomComponent,
+    EscapeHtmlPipe
   ],
   imports: [
     BrowserModule,

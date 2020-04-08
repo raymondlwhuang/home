@@ -25,7 +25,7 @@ export class FunctionComponent implements OnInit {
     {name: 'await', value:'await'},
     {name: 'entries', value:'entries'},
     {name: 'values', value:'values'},
-    {name: 'decorator', value:'decorator'},
+    {name: 'promise', value:'promise'},
   ];
   constructor(private _favorite : FavoriteService) { }
 

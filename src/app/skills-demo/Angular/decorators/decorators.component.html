@@ -13,8 +13,8 @@
         <div class="demo-container">
             <p>Purpose of decorator in Angular is to attach metadata to a class</p>
             <p>A metadata is simply a merge result of defaults with the specified properties.</p>
-            <p>We can create two type of decorator: Class or Member decorator</p>
-            <h3>An example of custom decorator</h3>
+            <p>Type of decorators: Class, Member, properties,accessors,parmeters</p>
+            <h3>An example of custom 'Class' decorator</h3>
             <textarea rows="20" readonly>
                 export function AutoUnsubscribe(obs$ = []) {
                     return function(constructor: any) {

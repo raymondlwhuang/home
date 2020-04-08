@@ -4,4 +4,5 @@ export interface Demo {
     snip: [];
     output?: [];
     helpPath?: string;
+    fireCaseName?:string;
 }

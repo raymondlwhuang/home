@@ -7,5 +7,7 @@ export interface InputHolder {
     showCaseFlag? : string;
     parentClick?: boolean;  
     imagesList?: string;
+    fireCaseName?:string;
+    output?: string;
 }
 

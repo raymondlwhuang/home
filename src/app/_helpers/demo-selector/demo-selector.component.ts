@@ -35,7 +35,10 @@ export class DemoSelectorComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.demoService.getDemos().subscribe(items => this.demos = items.filter(item=>(item.group==this.group ||item.group==''))); 
+    this.demoService.getDemos().subscribe(items => {
+      this.demos = items.filter(item=>(item.group==this.group ||item.group==''));
+      if(this.demos.length ==1) this.demos[0].name = "Comming Soon!"
+    }); 
   }
   startClock(indicator,element){
     this.indicator = indicator;
@@ -62,9 +65,8 @@ export class DemoSelectorComponent implements OnInit {
     this.parentClick.next(false);
     let snip = '';
     let codeSnip = document.getElementById("code-snip");
-    let thisHolder : InputHolder = this.inputHolder;
     this.flag = option.value;
-    this.inputHolder = {showCaseFlag:option.value};
+    this.inputHolder = {showCaseFlag:option.value,group:this.group};
     if(option.value != '') {
       codeSnip.className = "add-border";
       this.demos.forEach((result) => {
@@ -72,7 +74,7 @@ export class DemoSelectorComponent implements OnInit {
           result.snip.forEach(element => snip += element + '</br>');
           this.output = '';
           result.output.forEach(element => this.output += element + '</br>');
-          this.inputHolder = {showCaseFlag:option.value,helpPath:result.helpPath};
+          this.inputHolder = {showCaseFlag:option.value,helpPath:result.helpPath,fireCaseName:result.fireCaseName,output:this.output,group:this.group};
         } 
       });
     }
