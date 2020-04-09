@@ -24,3 +24,7 @@ export const successCreateUserAction = createAction(
     '[USER] - Success Create User',
     props<{payload:User}>()
 );
+export const errorUserAction = createAction(
+    '[USER] - Error',
+    props<Error>()
+);

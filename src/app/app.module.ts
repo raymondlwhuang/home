@@ -37,7 +37,6 @@ import { FunctionComponent } from './skills-demo/javascript/function/function.co
 import { DecoratorsComponent } from './skills-demo/Angular/decorators/decorators.component';
 import { ChangeDetectionComponent } from './skills-demo/Angular/change-detection/change-detection.component';
 import { DecoratorsModule } from './skills-demo/Angular/decorators/decorators.module';
-//import { ShowCaseComponent } from './skills-demo/Angular/helpers/show-case/show-case.component';
 import { MediaQueryFlexboxDirective } from './_directives/media-query-flexbox.directive';
 import { FlexItemDirective } from './_directives/flex-item.directive';
 import { FormArrayComponent } from './skills-demo/Angular/form-array/form-array.component';
@@ -50,6 +49,11 @@ import { DemoSelectorComponent } from './_helpers/demo-selector/demo-selector.co
 import { ShowCaseComponent } from './_helpers/show-case/show-case.component';
 import { DomComponent } from './skills-demo/javascript/dom/dom.component';
 import { EscapeHtmlPipe } from './_pipes/keep-html.pipe';
+import { StoreModule } from '@ngrx/store';
+import { UserReducer } from './_store/reducers/user.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from './_store/effects/user.effect';
+import { StateManagementComponent } from './skills-demo/Angular/state-management/state-management.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +84,8 @@ import { EscapeHtmlPipe } from './_pipes/keep-html.pipe';
     AngOthersComponent,
     DemoSelectorComponent,
     DomComponent,
-    EscapeHtmlPipe
+    EscapeHtmlPipe,
+    StateManagementComponent
   ],
   imports: [
     BrowserModule,
@@ -99,7 +104,9 @@ import { EscapeHtmlPipe } from './_pipes/keep-html.pipe';
     MatListModule,
     DecoratorsModule,
     MatSnackBarModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    StoreModule.forRoot({users : UserReducer}),
+    EffectsModule.forRoot([UserEffects])
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

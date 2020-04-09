@@ -1,0 +1,55 @@
+<div class="demo-container form-group">
+    <h3>Add New User</h3>
+    <form (ngSubmit)="createUser()">
+      <div>
+        <div appMediaQueryFlexbox >
+            <div>
+            <input
+                [(ngModel)]="email"
+                placeholder="Enter your Email"
+                class="form-control"
+                name="email"
+            />
+            </div>
+            <div>
+            <input
+                [(ngModel)]="firstName"
+                placeholder="Enter your First Name"
+                class="form-control"
+                name="firstName"
+            />
+            </div>
+            <div>
+            <input
+                [(ngModel)]="lastName"
+                placeholder="Enter your Last Name"
+                class="form-control"
+                name="lastName"
+            />
+            </div>
+            <div>
+            <input
+                [(ngModel)]="yearsActive"
+                placeholder="Update your Activation year"
+                class="form-control"
+                name="yearsActive"
+                type="number" min ="0"
+                max="150"
+            />
+            </div>
+  
+        </div>  
+        <div class="col-md-2">
+          <button type="submit" class="btn btn-primary" style="Width:70px;">
+            Add
+          </button>
+        </div>
+      </div>
+    </form>
+</div>    
+
+<ng-container *ngFor="let user of userList">
+    <div class="demo-container">
+        <p>Email: {{ user.email }}, First Name:  {{ user.firstName }}, Last Name:  {{ user.lastName }}, Year Activated:  {{ user.yearsActive }}</p>
+    </div>
+</ng-container>
