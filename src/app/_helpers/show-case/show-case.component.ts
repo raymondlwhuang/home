@@ -31,8 +31,10 @@ export class ShowCaseComponent implements OnChanges {
     this.show = true;
     this.outputText='';
     this.message = 'Please make your selection for show case';
-    document.getElementById('output').removeAttribute('style');
-    document.getElementById('fire-case-output').classList.remove('add-border');
+    let outputEle = document.getElementById('output');
+    let fireCaseOutputEle = document.getElementById('fire-case-output');
+    if(outputEle) outputEle.removeAttribute('style');
+    if(fireCaseOutputEle) fireCaseOutputEle.classList.remove('add-border');
 }
   ngOnChanges(){
     if(this.inputHolder.helpPath && this.inputHolder.helpPath!='') {

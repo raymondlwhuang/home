@@ -24,6 +24,18 @@ export const successCreateUserAction = createAction(
     '[USER] - Success Create User',
     props<{payload:User}>()
 );
+export const deleteUserAction = createAction(
+    '[USER] - Delete User',
+    props<{payload:string}>()
+);
+export const beginDeleteUserAction = createAction(
+    '[USER] - Begin Create User',
+    props<{payload:string}>()
+);
+export const successDeleteUserAction = createAction(
+    '[USER] - Success Create User',
+    props<{payload:string}>()
+);
 export const errorUserAction = createAction(
     '[USER] - Error',
     props<Error>()

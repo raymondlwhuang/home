@@ -49,4 +49,23 @@ export class UserEffects {
       )
     )
   );
+  DeleteUsers$: Observable<Action> = createEffect(() =>
+    this.action$.pipe(
+      ofType(UserActions.beginDeleteUserAction),
+      mergeMap(action =>
+        this.http
+          .post(this.ApiURL, JSON.stringify(action.payload), {
+            headers: { 'Content-Type': 'application/json' }
+          })
+          .pipe(
+            map((data: string) => {
+              return UserActions.successDeleteUserAction({ payload: data });
+            }),
+            catchError((error: Error) => {
+              return of(UserActions.errorUserAction(error));
+            })
+          )
+      )
+    )
+  );  
 }

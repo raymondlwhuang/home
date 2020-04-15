@@ -9,3 +9,4 @@ html Select, Set focus to element not working the same way as mat-select
 https://angular.io/api/forms/SelectControlValueAccessor
 this.http.get("app/files/1.txt", { responseType: 'text' as 'json'})
 <div *ngFor="let pony of ponies; index as idx">
+<form (ngSubmit)="updateCourse(updateForm)" #updateForm="ngForm">

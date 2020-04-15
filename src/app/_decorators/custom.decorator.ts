@@ -57,17 +57,20 @@ export function HtmlConsole(config?) {
         const original = descriptor.value;
         descriptor.value = function(...args: any[]){
             let fireCaseOutput = document.getElementById(config.id);
-            args.forEach(arg=>{
-                if(!arg || arg =='') fireCaseOutput.innerHTML = '';
-                else {
-                    if (typeof arg == 'object') {
-                        fireCaseOutput.innerHTML += (JSON && JSON.stringify ? JSON.stringify(arg) : arg) + '<br />';
-                    } else {
-                        fireCaseOutput.innerHTML += arg + '<br />';
-                    }    
-                }
-                return arg;
-            });
+            if(fireCaseOutput) {
+                args.forEach(arg=>{
+                    if(!arg || arg =='') fireCaseOutput.innerHTML = '';
+                    else {
+                        if (typeof arg == 'object') {
+                            fireCaseOutput.innerHTML += (JSON && JSON.stringify ? JSON.stringify(arg) : arg) + '<br />';
+                        } else {
+                            fireCaseOutput.innerHTML += arg + '<br />';
+                        }    
+                    }
+                    return arg;
+                });
+    
+            }
         }
         return descriptor;
     }

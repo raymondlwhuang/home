@@ -8,9 +8,3 @@
     yearsActive?: number;
     token?: string;
 }
-// export interface User {
-//     email: string;
-//     firstName: string;
-//     lastName: string;
-//     yearsActive: number;
-//   }

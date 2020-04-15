@@ -17,6 +17,12 @@ export const userReducer = createReducer(
     on(UserActions.successCreateUserAction,(state: UserState ,{payload})=>{
         return {...state,Users:[...state.Users,payload],UserError:null};
     }),
+    on(UserActions.deleteUserAction,(state: UserState ,{payload})=>{
+        return {...{},Users:[...state.Users,state.Users.filter(user=>user.email!=payload)],UserError:null};
+    }),
+    on(UserActions.successDeleteUserAction,(state: UserState ,{payload})=>{
+        return {...{},Users:[...state.Users,state.Users.filter(user=>user.email!=payload)],UserError:null};
+    }),
     on(UserActions.errorUserAction,(state: UserState,error:Error)=>{
         return {...state,UserError:error};
     })

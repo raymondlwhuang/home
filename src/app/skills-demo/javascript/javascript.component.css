@@ -12,3 +12,8 @@ li {
     list-style-type: initial;
     list-style-position: inside;
 }
+textarea {
+    min-width: 280px;
+    flex-grow: 1;
+    margin: 5px;
+}

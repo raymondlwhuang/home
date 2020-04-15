@@ -22,7 +22,7 @@ export class StateManagementComponent implements OnInit {
   password?: string;
   firstName?: string;
   lastName?: string;
-  yearsActive?: number=0;
+  yearsActive?: number;
   token?: string;
   constructor(private store : Store <{users : UserState}>) {
     this.user$ = this.store.pipe(select('users'));
@@ -40,22 +40,34 @@ export class StateManagementComponent implements OnInit {
   ngOnDestroy(): void {
   }
   createUser() {
-    const user: User = { 
-      id : uuid(),
-      email:this.email,
-      username: this.firstName + ' ' + this.lastName,
-      firstName:this.firstName,
-      lastName:this.lastName,
-      yearsActive:this.yearsActive,
-     };
-   
-    this.store.dispatch(UserActions.createUserAction(user));
-    this.store.dispatch(UserActions.beginCreateUserAction({ payload: user }));
-    this.id = 0;
-    this.email='';
-    this.firstName='';
-    this.lastName='';
-    this.yearsActive=0;
-  }
+    if(this.firstName!='' || this.lastName!='') {
+      const user: User = { 
+        id : uuid(),
+        email:this.email,
+        username: this.firstName + ' ' + this.lastName,
+        firstName:this.firstName,
+        lastName:this.lastName,
+        yearsActive:this.yearsActive,
+       };
+     
+      this.store.dispatch(UserActions.createUserAction(user));
+      this.store.dispatch(UserActions.beginCreateUserAction({ payload: user }));
+      this.id = 0;
+      this.email='';
+      this.firstName='';
+      this.lastName='';
+      this.yearsActive=0;
+    }
 
+  }
+  showHide(flag? : number){
+    document.getElementById('show-hide').classList.toggle("expend");
+    document.getElementById('show-hide-sign').classList.toggle("expend");
+    if(flag) document.getElementById('old').classList.toggle("hide");
+    else  document.getElementById('new').classList.toggle("hide");
+  }
+  deleteUser(email:string){
+    this.store.dispatch(UserActions.deleteUserAction({payload:email}));
+    this.store.dispatch(UserActions.beginDeleteUserAction({ payload: email }));
+  }
 }

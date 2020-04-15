@@ -31,3 +31,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 #output textarea{
     width: 100%;
 }
+.router-container{
+    height: 100%;
+}
+@media all and (max-width : 599px){
+    textarea {
+        width: 100%;;
+    }
+}
