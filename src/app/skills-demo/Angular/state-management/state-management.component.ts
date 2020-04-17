@@ -1,73 +1,70 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
-import { UserState } from 'src/app/_store/state/user.state';
-import { User } from 'src/app/_models/user';
-import { State, Store, select } from '@ngrx/store';
-import { map } from 'rxjs/operators';
-import * as UserActions from '../../../_store/actions/user.action'
+import { Observable } from 'rxjs';
+import { Course } from 'src/app/_models/course';
+import { CourseService } from 'src/app/_services/course.service';
+import { Store, select } from '@ngrx/store';
+import { CourseState } from 'src/app/_store/state/course.state';
+import { getAllCourses } from 'src/app/_store/selectors/course.selector';
+import * as courseActionTypes from '../../../_store/actions/course.action';
+import { Update } from '@ngrx/entity';
+import { NgForm }   from '@angular/forms';
 import {v4 as uuid} from 'uuid';
+
 @Component({
   selector: 'app-state-management',
   templateUrl: './state-management.component.html',
   styleUrls: ['./state-management.component.css']
 })
 export class StateManagementComponent implements OnInit {
-  user$ : Observable<UserState>;
-  userSubscription : Subscription;
-  userList : Array<User>;
-  userError : Error;
-  id?: number;
-  email?: string;
-  username?: string;
-  password?: string;
-  firstName?: string;
-  lastName?: string;
-  yearsActive?: number;
-  token?: string;
-  constructor(private store : Store <{users : UserState}>) {
-    this.user$ = this.store.pipe(select('users'));
-   }
+  courses$ : Observable<Course[]>;
+  courseToBeUpdated : Course;
+  isUpdateActivated = false;
+  isAddActivated = false;
+
+  constructor(private courseService : CourseService, private store : Store<CourseState>) { }
 
   ngOnInit() {
-    this.userSubscription = this.user$.pipe(
-      map(data=>{
-        this.userList = data.Users;
-        this.userError = data.UserError;
-      })
-    ).subscribe();
-    this.store.dispatch(UserActions.beginGetUserAction());
+    this.courses$ = this.store.pipe(select(getAllCourses));
   }
-  ngOnDestroy(): void {
+  deleteCourse(payload:string) {
+    this.store.dispatch(courseActionTypes.deleteCourse({payload}))
   }
-  createUser() {
-    if(this.firstName!='' || this.lastName!='') {
-      const user: User = { 
-        id : uuid(),
-        email:this.email,
-        username: this.firstName + ' ' + this.lastName,
-        firstName:this.firstName,
-        lastName:this.lastName,
-        yearsActive:this.yearsActive,
-       };
-     
-      this.store.dispatch(UserActions.createUserAction(user));
-      this.store.dispatch(UserActions.beginCreateUserAction({ payload: user }));
-      this.id = 0;
-      this.email='';
-      this.firstName='';
-      this.lastName='';
-      this.yearsActive=0;
+  showUpdateForm(payload : Course) {
+    document.getElementById('data-table').style.display = 'none';
+    this.courseToBeUpdated = {...payload};
+    this.isUpdateActivated = true;
+  }
+  showAddForm() {
+    document.getElementById('data-table').style.display = 'none';
+    this.isAddActivated = true;
+  }
+  AddCourse(submittedForm: NgForm) {
+    this.isAddActivated = false;
+    document.getElementById('data-table').removeAttribute('style');
+    if(submittedForm.invalid) {
+      return;
     }
+    const payload : Course = {id: uuid(), name: submittedForm.value.name, description:submittedForm.value.description};
+    this.store.dispatch(courseActionTypes.createCourse({payload}));  
+  }  
+  updateCourse(updateForm: NgForm){
+    const payload: Update<Course> = {
+      id: this.courseToBeUpdated.id,
+      changes: {
+        ...this.courseToBeUpdated,
+        ...updateForm.value
+      }
+    };
 
+    this.store.dispatch(courseActionTypes.updateCourse({payload}));
+
+    this.isUpdateActivated = false;
+    this.courseToBeUpdated = null;
+    document.getElementById('data-table').removeAttribute('style');
   }
-  showHide(flag? : number){
-    document.getElementById('show-hide').classList.toggle("expend");
-    document.getElementById('show-hide-sign').classList.toggle("expend");
-    if(flag) document.getElementById('old').classList.toggle("hide");
-    else  document.getElementById('new').classList.toggle("hide");
-  }
-  deleteUser(email:string){
-    this.store.dispatch(UserActions.deleteUserAction({payload:email}));
-    this.store.dispatch(UserActions.beginDeleteUserAction({ payload: email }));
+  cancel(){
+    this.isUpdateActivated = false;
+    this.courseToBeUpdated = null;
+    document.getElementById('data-table').removeAttribute('style');
   }
 }

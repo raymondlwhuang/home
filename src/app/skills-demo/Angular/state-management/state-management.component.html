@@ -1,84 +1,53 @@
-<div class="demo-container form-group">
-<div id="show-hide">
-  <div id="show-hide-sign">
-    <mat-icon color="accent" (click)="showHide(0)">unarchive</mat-icon>
-    <mat-icon color="accent" (click)="showHide(1)">unarchive</mat-icon>
-  </div>
-<textarea id="new" rows="15" class="hide">
-Model: export interface User {...}
-State: export interface UserState {...}
-       export const initialUserState = (): UserState =>{
-         return {Users: Array<User>(),UserError: null};
-       }
-Action: export const getToDoAction = createAction('[User] - Get User');
-        export const createToDoAction = createAction('[User] - Create User',props<User>());
-Reducer:export const iniUserState = initialUserState();
+<div>
+  <table class="table table-dark" id = "data-table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Operations</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of courses$ | async">
+        <td>{{ course.name }}</td>
+        <td>{{ course.description }}</td>
+        <td>
+          <mat-icon (click)="showUpdateForm(course)">update</mat-icon>
+          <mat-icon (click)="deleteCourse(course.id)">delete_forever</mat-icon>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <mat-icon (click)="showAddForm()">add_circle</mat-icon>
 
-        export const userReducer = createReducer(
-            iniUserState,
-            on(UserActions.getUserAction,state=>state),
-            on(UserActions.createUserAction,(state: UserState ,user : User)=>{
-                return {...state,Users:[...state.Users,user],UserError:null};
-            }),
-            on(UserActions.successGetUserAction,(state: UserState ,{payload})=>{
-                return {...state,Users : payload};
-            }),
-            on(UserActions.successCreateUserAction,(state: UserState ,{payload})=>{
-                return {...state,Users:[...state.Users,payload],UserError:null};
-            }),
-            on(UserActions.errorUserAction,(state: UserState,error:Error)=>{
-                return {...state,UserError:error};
-            })
-        );
-
-        export function UserReducer (state: UserState | undefined,action:Action){
-            return userReducer(state,action);
-        }
-Component:  constructor(private store : Store <{users : UserState}>) {
-                            this.user$ = this.store.pipe(select('users'));
-                          }
-
-              ngOnInit() {
-                this.userSubscription = this.user$.pipe(
-                  map(data=>{
-                    this.userList = data.Users;
-                    this.userError = data.UserError;
-                  })
-                ).subscribe();
-                this.store.dispatch(UserActions.beginGetUserAction());
-              } 
-Register(store and effect):     StoreModule.forRoot({users : UserReducer}),
-                                  EffectsModule.forRoot([UserEffects])
-</textarea>
-<textarea id="old" rows="15" class="hide">
-this is the old way
-</textarea>
-</div>
-    <form (ngSubmit)="createUser()">
-      <div appMediaQueryFlexbox>
-        <div appMediaQueryFlexbox >
-            <div>
-              <input [(ngModel)]="email" placeholder="Enter your Email" class="form-control" name="email" />
-            </div>
-            <div>
-              <input [(ngModel)]="firstName" placeholder="Enter your First Name" class="form-control" name="firstName" />
-            </div>
-            <div>
-              <input [(ngModel)]="lastName" placeholder="Enter your Last Name" class="form-control" name="lastName" />
-            </div>
-            <div>
-              <input [(ngModel)]="yearsActive" placeholder="Years Activatived" class="form-control" name="yearsActive" type="number" min ="0" max="100" />
-            </div>
-        </div>  
-        <div class="col-md-2">
-          <button type="submit" class="btn btn-primary" style="Width:70px;"> Add </button>
-        </div>
+  <div *ngIf="isUpdateActivated" style="margin-top: 50px; margin-left: 50px;">
+    <h4>Update Course</h4>
+    <form (ngSubmit)="updateCourse(updateForm)" #updateForm="ngForm">
+      <div class="form-group">
+        <label for="name">Course Name</label>
+        <input type="text"id="name" name="name" class="form-control" required [(ngModel)]="courseToBeUpdated.name" style="width: 400px"/>
       </div>
+      <div class="form-group">
+        <label for="side">Description</label>
+        <input type="text" id="description" name="description" class="form-control" required [(ngModel)]="courseToBeUpdated.description" style="width: 400px"/>
+      </div>
+      <button [disabled]="updateForm.invalid" class="btn btn-success" type="submit">Update</button>
+      <button (click)="cancel()" class="btn btn-danger" type="reset">Cancel</button>
     </form>
-</div>    
-
-<ng-container *ngFor="let user of userList">
-    <div class="demo-container">
-        <p>Email: {{ user.email }}, First Name:  {{ user.firstName }}, Last Name:  {{ user.lastName }}, Year Activated:  {{ user.yearsActive }}<mat-icon class="delete" color="accent" (click)="deleteUser(user)">delete</mat-icon></p>
-    </div>
-</ng-container>
+  </div>
+  <div *ngIf="isAddActivated" style="margin-top: 50px; margin-left: 50px;">
+    <h4>Add Course</h4>
+    <form (ngSubmit)="AddCourse(createForm)" #createForm="ngForm">
+        <div class="form-group">
+          <label for="name">Course Name</label>
+          <input type="text" id="name" name="name" class="form-control" ngModel required style="width: 400px"/>
+        </div>
+        <div class="form-group">
+          <label for="side">Description</label>
+          <input type="text" id="description" name="description" class="form-control" ngModel required style="width: 400px"/>
+        </div>
+        <button [disabled]="createForm.invalid" class="btn btn-success" type="submit">Add</button>
+        <button class="btn btn-danger" type="submit">Cancle</button>
+      </form>
+  </div>
+</div>

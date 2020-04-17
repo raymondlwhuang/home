@@ -53,7 +53,10 @@ import { StoreModule } from '@ngrx/store';
 import { UserReducer } from './_store/reducers/user.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './_store/effects/user.effect';
-import { StateManagementComponent } from './skills-demo/Angular/state-management/state-management.component';
+import { CourseReducer } from './_store/reducers/course.reducer';
+import { CourseEffects } from './_store/effects/course.effect';
+import { CourseResolver } from './_store/resolvers/course.resolver';
+import { StateManagementModule } from './skills-demo/Angular/state-management/state-management.module';
 
 @NgModule({
   declarations: [
@@ -84,8 +87,7 @@ import { StateManagementComponent } from './skills-demo/Angular/state-management
     AngOthersComponent,
     DemoSelectorComponent,
     DomComponent,
-    EscapeHtmlPipe,
-    StateManagementComponent
+    EscapeHtmlPipe
   ],
   imports: [
     BrowserModule,
@@ -104,15 +106,18 @@ import { StateManagementComponent } from './skills-demo/Angular/state-management
     MatListModule,
     DecoratorsModule,
     MatSnackBarModule,
+    StateManagementModule,
+    StateManagementModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    StoreModule.forRoot({users : UserReducer}),
-    EffectsModule.forRoot([UserEffects])
+    StoreModule.forRoot({users : UserReducer,courses: CourseReducer}),
+    EffectsModule.forRoot([UserEffects,CourseEffects])
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    {provide: APP_BASE_HREF, useValue: ''},
-    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},
+    { provide: APP_BASE_HREF, useValue: '' },
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500 }},
+    CourseResolver,
     // provider used to create fake backend
     fakeBackendProvider    
   ],
